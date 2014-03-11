@@ -25,37 +25,43 @@
 
 
 %********************************** %First Section  **************************************
-\section{Overview of the bachelour thesis } %Section - 1.1 
+\section{Overview of the Bachelor Thesis } %Section - 1.1 
 
 In embedded real time systems it is necessary to make efforts to verify a system design.
 A system design can be formalized by a mathematical specification for a dynamic system model.
-One approach to system design verification is the deduction of the model, that shows that the design implies the requirements. [Satz prüfen] 
+One approach to system design verification is the deduction, that shows that the design implies the requirements. 
 
-In critical real time systems timing constraints are expressed with either explicit or implicit temporal logic.
+In critical Real Time Systems (RTS) timing constraints have to be considered in the requirement engineering.
+Such Real Time Systems are modeled by states changing over time.
+Time constraints can be formulated as constraints on the duration of critical states. 
+A real time logic should be able to specify that real time constraints. Generally it seems that two main classes
+of real time logic are present, explicit or implicit temporal logic.\cite{210306} 
+
 Explicit temporal logic is an expression of a time variable. The time variable can be the representation of a time interval or a variable in temporal logic. 
 Implicit temporal logic (for example MTL - Metric Temporal Logic) is using temporal operators that constrain the extend of a state.
 It is based on interval temporal logic and the duration concept.
-Implicit temporal logic can be very usefull to express before/after relations between concurrent actions.
-For further details \cite{210306} can be a good soure of information.
-In runtime verification a monitor evaluates executions of a \textbf{System under Test(SUT)} \cite{RTFMBJ13}. 
-The evaluation is formalized from a formal specification.
+Implicit temporal logic can be very useful to express before/after relations between concurrent actions.
+For further details \cite{210306} can be a good source of information.
+In runtime verification a monitor evaluates executions of a \textbf{System under Test (SUT)} \cite{RTFMBJ13}. 
+The evaluation is formalized from a formal specification.\newpage
 For ultra critical systems it is important to meet four major requirements:
 \begin{enumerate}
- \item functionality : cannot change target's behaviour [prüfen]
+ \item functionality : cannot change target's behavior [prüfen]
  \item certifiability: must avoid re-certification
  \item timing :	  must not interfere with the target's timing
  \item swap :     must not exhaust size, weight and power tolerance
 \end{enumerate}
-\newpage
-In the publication ``\textbf{Real-Time Runtime Verification on Chip} '' \cite{RTFMBJ13} this concept is described in great detail. [prüfen]\newline
-A \textbf{Runtime Verification Unit(RVU)} is a verification monitor that meets that fout major requirements.[prüfen]
-As part of this requirements, the RVU must seperated from SUT.
+
+A \textbf{Runtime Verification Unit (RVU)} is a verification monitor that meets that four major requirements.[prüfen]
+As part of this requirements, the RVU must be separated from SUT.
 In fact it is a synthesized hardware that monitors the execution of a SUT.\newline
-The topic of my thesis ``Hardware implementation of an invariant observer'' can also be considered as a RVU, 
-it evaluates the execution of a SUT and checks it for invariance.
+The topic of my thesis ``Hardware implementation of an Invariant Observer'' can also be considered as a RVU, 
+it evaluates the execution of a SUT and checks it for invariance conditions.
 My observer is an alternative  implementation of the invariant observer INVARIANT-SYMBOL published in \cite{RTFMBJ13},
-that bypass the problem of ressource limitation and make use of the significant advantages of a high parallel
+that bypass the problem of resource limitation and make use of the significant advantages of a high parallel
 \textbf{Field Programmable Gate Array(FPGA)} hardware implementation.
+In the publication ``\textbf{Real-Time Runtime Verification on Chip} '' \cite{RTFMBJ13} the concept of a RVU and 
+the principles of that Verification Framework are described in great detail.\newline
 
 
 
