@@ -32,7 +32,7 @@ A system design can be formalized by a mathematical specification for a dynamic 
 One approach to system design verification is the deduction, that shows that the design implies the requirements. 
 
 In critical Real Time Systems (RTS) timing constraints have to be considered in the requirement engineering.
-Such Real Time Systems are modeled by states changing over time.
+Such Real Time Systems are modelled by states changing over time.
 Time constraints can be formulated as constraints on the duration of critical states. 
 A real time logic should be able to specify that real time constraints. Generally it seems that two main classes
 of real time logic are present, explicit or implicit temporal logic.\cite{210306} 
@@ -43,16 +43,16 @@ It is based on interval temporal logic and the duration concept.
 Implicit temporal logic can be very useful to express before/after relations between concurrent actions.
 For further details \cite{210306} can be a good source of information.
 In runtime verification a monitor evaluates executions of a \textbf{System under Test (SUT)} \cite{RTFMBJ13}. 
-The evaluation is formalized from a formal specification.\newpage
+The evaluation is formalised from a formal specification described in temporal logic.\newpage
 For ultra critical systems it is important to meet four major requirements:
 \begin{enumerate}
- \item functionality : cannot change target's behavior [prüfen]
- \item certifiability: must avoid re-certification
- \item timing :	  must not interfere with the target's timing
- \item swap :     must not exhaust size, weight and power tolerance
+ \item Functionality : cannot change target's behaviour
+ \item Certifiability: must avoid re-certification
+ \item Timing :	  must not interfere with the target's timing
+ \item Swap :     must not exhaust size, weight and power tolerance
 \end{enumerate}
 
-A \textbf{Runtime Verification Unit (RVU)} is a verification monitor that meets that four major requirements.[prüfen]
+A \textbf{Runtime Verification Unit (RVU)} is a verification monitor that meets that four major requirements.
 As part of this requirements, the RVU must be separated from SUT.
 In fact it is a synthesized hardware that monitors the execution of a SUT.\newline
 The topic of my thesis ``Hardware implementation of an Invariant Observer'' can also be considered as a RVU, 
@@ -60,8 +60,12 @@ it evaluates the execution of a SUT and checks it for invariance conditions.
 My observer is an alternative  implementation of the invariant observer INVARIANT-SYMBOL published in \cite{RTFMBJ13},
 that bypass the problem of resource limitation and make use of the significant advantages of a high parallel
 \textbf{Field Programmable Gate Array(FPGA)} hardware implementation.
+The most important difference is that my observer is not bounded to a specific $\tau$, but the observer in \cite{RTFMBJ13}
+are bounded.This feature will be explained in the next section.
+
 In the publication ``\textbf{Real-Time Runtime Verification on Chip} '' \cite{RTFMBJ13} the concept of a RVU and 
-the principles of that Verification Framework are described in great detail.\newline
+the principles of that Verification Framework are described in great detail.\newline\newline
+A survey about the functionality of the invariant observer in the next section.
 
 
 
@@ -80,9 +84,25 @@ the principles of that Verification Framework are described in great detail.\new
 
 %********************************** %Second Section  *************************************
 \section{The Invariant Observer } %Section - 1.2
+This section is a survey about the invariant observer and how it works.
+More details about algorithm are presented in the next chapter. \newline
 
+\newpage
 
-It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using `Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for `lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+%\begin{tikztimingtable}[scale=1.75,timing/counter/new={char=Q,reset char=R}]
+%    $n$ & 25{Q} \\
+%    $e^n \models \phi_1$ & 6{L}19{H} \\
+%    $e^n \models \phi_2$ & 2{H}2L3H1L2H3L3H2L2H2L3H\\
+%    \extracode
+%    \begin{pgfonlayer}{background}
+%    \end{pgfonlayer}
+
+%    \begin{background}[shift={(0.1,0)},dashed,help lines]
+%    \vertlines{}
+%    \end{background}
+
+%\end{tikztimingtable}
+
 
 %********************************** % Third Section  *************************************
 \section{Where does it come from?}  %Section - 1.3 
