@@ -100,13 +100,18 @@
 \usepackage{subfig} %note: subfig must be included after the `caption` package. 
 
 % ********************************* Timing Tikz Pictures **************************************
-\usepackage{Packages/tikz-timing/tikz-timing}
-\kjASDKLAsjeh
-%\RequirePackage{tikz-timing}
-%\usepackage{tikz-timing}
-%\usetikztiminglibrary[new={char=Q,reset char=R}]{counters}
-%\usepackage[active,tightpage]{preview}
-%\PreviewEnvironment{tikzpicture}
+%\usepackage{Packages/tikz-timing/tikz-timing}
+%\usepackage{Packages/tikz-timing/tikz-timing-counters}
+
+%installed in texlive2013
+\usepackage{tikz}
+\usepackage{tikz-timing}
+
+%\usepackage{tikz-timing-counters}
+\usetikzlibrary{arrows,snakes,backgrounds,patterns,matrix,shapes,fit,calc,shadows,plotmarks}
+\usetikztiminglibrary[new={char=Q,reset char=R}]{counters}
+
+
 %\setlength{\PreviewBorder}{5mm}
 
 
@@ -155,3 +160,7 @@
 
 %\renewcommand{\appendixtocname}{List of appendices}
 %\renewcommand{\appendixname}{Appndx}
+
+
+
+
