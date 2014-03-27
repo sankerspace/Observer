@@ -65,7 +65,7 @@ are bounded.This feature will be explained in the next section.
 
 In the publication ``\textbf{Real-Time Runtime Verification on Chip} '' \cite{RTFMBJ13} the concept of a RVU and 
 the principles of that Verification Framework are described in great detail.\newline\newline
-A survey about the functionality of the invariant observer in the next section.
+A survey about the functionality of the invariant observer in the following sections.
 
 
 
@@ -83,26 +83,79 @@ A survey about the functionality of the invariant observer in the next section.
 
 
 %********************************** %Second Section  *************************************
+\newpage
 \section{The Invariant Observer } %Section - 1.2
 This section is a survey about the invariant observer and how it works.
-More details about algorithm are presented in the next chapter. \newline
-
-\newpage
-
+More details about the observers algorithm are presented in the next chapter. \newline
+The Invariant Observer acts like the temporal (invariant previously) operator $\boxbox_\tau \phi$
+of the Metric Temporal Logic (MTL) and is of course restricted on the past time (ptMTL).
+The temporal operator takes an input $\phi$ , the calculation of a propositional
+formula, and evaluates if $\phi$ holds for the past $\tau$ execution times , including
+the current execution time in a discrete time setting.
+For example the logical consequence $e^n \models \boxbox_3 \phi$ expresses that
+the current execution $e^n$ (with n as the discrete execution time, n$\in\mathbb{N}$)
+is true iff (if and only if) the evaluation of $\phi$ is true now and was also true the last 
+$\tau=3$ execution times. In fact the $\boxbox_\tau \phi$ is a specialization of the 
+$\boxdot_{[0,\tau]}\phi$ ptMTL operator which inidcates the range of the invariance qualification.\newline
+Figure~\ref{fig:inv_example} and Figure~\ref{fig:inv_example_2} show an example for such a temporal operator.
+ \newline
+%\newpage
+\begin{figure}[h] 
+\centering 
 \begin{tikztimingtable}[scale=1.75,timing/counter/new={char=Q,reset char=R}]
-    $n$ & 25{Q} \\
-    $e^n \models \phi_1$ & 6{L}19{H} \\
-    $e^n \models \phi_2$ & 2{H}2L3H1L2H3L3H2L2H2L3H\\
-    \extracode
-    \begin{pgfonlayer}{background}
-    \end{pgfonlayer}
-
-    \begin{background}[shift={(0.1,0)},dashed,help lines]
-    \vertlines{}
-    \end{background}
-
+  $n$ & 25{Q} \\
+  $e^n \models \phi$ & 1{L}1H2L2H3L3H4L4HL4H\\
+  $e^n \models \boxbox_\tau \phi$ & 19{L}1{H}4{L}1{H} \\
+  \extracode
+  \begin{pgfonlayer}{background}
+  \end{pgfonlayer}
+  \begin{background}[shift={(0.1,0)},dashed,help lines]
+   \vertlines{}
+  \end{background}
 \end{tikztimingtable}
+\caption[Invariant Observer with $\tau=3$]{Example for Invariant Operator  $\boxbox_\tau \phi$  with  $\tau$=3 }
+\label{fig:inv_example}
+\end{figure}
+\newline
+\begin{figure}[h] 
+\centering 
+\begin{tikztimingtable}[scale=1.75,timing/counter/new={char=Q,reset char=R}]
+  $n$ & 25{Q} \\
+  $e^n \models \phi$ & 1{L}1H2L2H3L3H4L4HL4H\\
+  $e^n \models \boxbox_\tau \phi$ & 11{L}1{H}7{L}1{H}4{L}1{H} \\
+  \extracode
+  \begin{pgfonlayer}{background}
+  \end{pgfonlayer}
+  \begin{background}[shift={(0.1,0)},dashed,help lines]
+   \vertlines{}
+  \end{background}
+\end{tikztimingtable}
+\caption[Invariant Observer with $\tau=2$]{Example for Invariant Operator  $\boxbox_\tau \phi$  with  $\tau$=2 }
+\label{fig:inv_example_2}
+\end{figure}
 
+My approach of the invariant observer is based on some certain requirements.
+The following subsection will discuss these requirements.
+ %******************* Subsection 1*******************
+\subsection{First Requirement}
+To introduce the first requirement we begin with the discussion of the  problem that the calculation
+of a atomic propositional formula $\phi$ could take several clock cycles (execution times).
+This means that a observer has to wait until the calculation of the proposition is finished.
+In \cite{RTFMBJ13} the observer needs to guarantee that it finishes evaluation of atomic propositions
+within a tight time bound.
+In our case ,if we start calculation of a propositional formula $\phi$ at every clock cycle and the 
+calculation itself needs $y$ clock cycles , than we need $y$ observer stages to cover at every clock cycle
+a finished calculation. These observer stages are part of the whole observer.
+After $y$ clock cycles , at every following clock cycle a calculation of $\phi$ will be available. At least
+one observer stage is ready to evaluate a calculation $\phi$ at any time.
+In other words, we are implementing temporal pipeline stages that represents components of the
+invariant operator and these components together are evaluating the invariance qualification of the proposition $\phi$.
+We don't have one observer, in fact the observer is composed from several observer stages.
+As a matter of fact, different many clock cycles for the calculation of $\phi$ are possible.
+Propositional formulas can be composed from several other complex propositional subformulas.
+In some cases a subformula is waiting for the resolution of an another subformula.
+In \cite{RTFMBJ13}  this balance is achieved with the restriction of the atomic proposition class
+by the abstract domain of logahedron.
 
 %********************************** % Third Section  *************************************
 \section{Where does it come from?}  %Section - 1.3 
