@@ -29,7 +29,7 @@
 
 In embedded real time systems it is necessary to make efforts to verify a system design.
 A system design can be formalized by a mathematical specification for a dynamic system model.
-One approach to system design verification is the deduction, that shows that the design implies the requirements. 
+One approach to system design verification is a deduction, which shows that the design implies the requirements. 
 
 In critical Real Time Systems (RTS) timing constraints have to be considered in the requirement engineering.
 Such Real Time Systems are modelled by states changing over time.
@@ -52,13 +52,13 @@ For ultra critical systems it is important to meet four major requirements:
  \item Swap :     must not exhaust size, weight and power tolerance
 \end{enumerate}
 
-A \textbf{Runtime Verification Unit (RVU)} is a verification monitor that meets that four major requirements.
+A \textbf{Runtime Verification Unit (RVU)} is a verification monitor that meets these four major requirements.
 As part of this requirements, the RVU must be separated from SUT.
 In fact it is a synthesized hardware that monitors the execution of a SUT.\newline
-The topic of my thesis ``Hardware implementation of an Invariant Observer'' can also be considered as a RVU, 
+The topic of my thesis ``Hardware Implementation of an Invariant Observer'' can also be considered as a RVU, 
 it evaluates the execution of a SUT and checks it for invariance conditions.
 My observer is an alternative  implementation of the invariant observer INVARIANT-SYMBOL published in \cite{RTFMBJ13},
-that bypass the problem of resource limitation and make use of the significant advantages of a high parallel
+that bypasses the problem of resource limitation and makes use of the significant advantages of a highly parallel
 \textbf{Field Programmable Gate Array(FPGA)} hardware implementation.
 The most important difference is that my observer is not bounded to a specific $\tau$, but the observer in \cite{RTFMBJ13}
 are bounded.This feature will be explained in the next section.
@@ -148,7 +148,7 @@ calculation itself needs $y$ clock cycles , than we need at least $y$ observer s
 These observer stages are part of the whole observer.
 After $y$ clock cycles , at every following clock cycle, a calculation of $\phi$ will be available. 
 At least one observer stage will be ready, too, to evaluate a calculation $\phi$ at any time.
-In other words, we are implementing temporal pipeline stages that represents components of the
+In other words, we are implementing temporal pipeline stages that represent components of the
 invariant operator and these components together are evaluating the invariance qualification of the proposition $\phi$.
 We don't have one observer, in fact the observer is composed from several observer stages.
 As a matter of fact, the calculation of a logical proposition $\phi$ can take as long as necessary.
@@ -164,7 +164,7 @@ of the signal W($\phi$), every value in that signal is timely ordered just in th
 calculated. Obviously, every represented execution time of W($\phi$) is the same as the execution time of the Observer. 
 This means, at every execution time (clock cycle) an observer stage is evaluating a signal W($\phi$) at that time. 
 In our case, signal W($\phi$) is apparently shifted by $y$ clock cycles to the right.
-This view is encouraged by the fact, that at the beginning of the monitoring, the observer stages has to wait, until
+This view is encouraged by the fact, that at the beginning of the monitoring, the observer stages have to wait, until
 the first value of the signal W($\phi$) is available which means that the first observer stage evaluates, 
 at execution time $e^y$, the first value of W($\phi$).
 The second observer stage evaluates, at execution time $e^{y+1}$, the second value of W($\phi$), and so on and so forth.
@@ -196,12 +196,12 @@ The example in Figure~\ref{fig:observer_example} shows us that the calculation o
 execution times. So no value is defined in the cycles before. If we take the view only from the proposition $\phi$ as a signal, then we calculate
 at every execution time $e^n$, from the latest inputs and subformulas at that time , exactly the proposition $\phi$ at that moment.
 But this holds under the assumption that the result of such a calculation is available immediately.
-The signal W($\phi$) shows us , what happen if calculations of proposition $\phi$ need some time, in that case $y$=3 clock cycles.
-As I mentioned, W($\phi$) is like signal $\phi$ shifted to the right.
+The signal W($\phi$) shows us , what happens if calculations of proposition $\phi$ need some time, in that case $y$=3 clock cycles.
+As mentioned, W($\phi$) is like signal $\phi$ shifted to the right.
 In Figure~\ref{fig:observer_example} we also see at which execution time the observer stages evaluate the signal W($\phi$).
 But this is only a preview about these observer stages. The algorithm about their real behaviour will be explained in the next chapter.
-The most important think here is that the observer are working delayed. Every new observer stage starts his work after the observer stage before.
-This is important, because every clock cycle must be covered as long as the calculation of W($\phi$) needs. 
+The most important thing here is that these observers are working delayed. Every new observer stage starts its work after the observer stage before.
+This is important, because every clock cycle must be covered as long as the calculation of W($\phi$) takes. 
 The last signal shows us the invariance qualification $e^{n-y} \models \boxbox_\tau \phi$ for $\tau$=2, which holds at execution time $e^{15}$ and $e^{22}$,
 but either for one cycle only.
 
@@ -222,19 +222,19 @@ Regarding Figure~\ref{fig:observer_example}, it is true now if the proposition $
 \subsection{System Settings of the Invariant Observer Stages}
 
 This was a briefly introduction about the specific behaviour of the invariant observer as a whole, but what's about the parameter settings.
-It starts with the question of how many observer stages do we actually need ? We already know that at least y are necesseray.
-If we have to define a number of observer stages with variable ''m'' than following condition mus be hold: $m \ge y$.
-Depending on how long the evaluation of a proposition needs, a minimum of y observer stages are necessary, but upwards 
-can be choosed arbitrarily. This shows us also the possibility to apply the Observer with his observer stages
+It starts with the question of how many observer stages do we actually need ? We already know that at least y are necessary.
+If we have to define a number of observer stages with variable ''m'' then following condition mus be hold: $m \ge y$.
+Depending on how long the calculation of a proposition $\phi$ needs, a minimum of y observer stages are necessary, but upwards 
+can be chosen arbitrarily. This shows us also the possibility to apply the Observer with his observer stages
 on different evaluations of system inputs despite the time they need and it works in real time.
 If we define only one observer stage (means immediate evaluation of $\phi$), then it works as a native invariant operator.\newline
 
 The next interesting aspect, and maybe the most powerful argument of this design way, is the invariance parameter $\tau$.
 The number of observer stages ''m'' stays in no relation to the invariance parameter $\tau$. Following conditions are possible:
 $m \ge \tau$ or $m < \tau$. As long as the observer is configured to cover the computation time of W($\phi$),it can be
-used for every arbitrarily choose of $\tau$. In \cite{RTFMBJ13} this setting is fixed.
+used for every arbitrary choice of $\tau$. In \cite{RTFMBJ13} this setting is fixed.
 My implementation of an invariant observer is able to change that parameter during run-time, but this feature is not 
-specified in the requirements, and should be treated as so.\newline
+specified in the requirements, and should be treated as such.\newline
 
 The next chapter shows the algorithm of the observer stages and how every observer stage works. 
 Also a representation of the software implementation will be explained in great detail.
