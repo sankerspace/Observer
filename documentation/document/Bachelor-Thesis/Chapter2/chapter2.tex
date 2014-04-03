@@ -4,44 +4,37 @@
 
 \chapter{Software Implementation and Algorithm}
 
-\ifpdf
-    \graphicspath{{Chapter2/Figs/Raster/}{Chapter2/Figs/PDF/}{Chapter2/Figs/}}
-\else
-    \graphicspath{{Chapter2/Figs/Vector/}{Chapter2/Figs/}}
-\fi
+%\ifpdf
+%    \graphicspath{{Chapter2/Figs/Raster/}{Chapter2/Figs/PDF/}{Chapter2/Figs/}}
+%\else
+%    \graphicspath{{Chapter2/Figs/Vector/}{Chapter2/Figs/}}
+%\fi
 
 
-\section[Short title]{Reasonably Long Section Title}
+\section{Algorithm of the Invariant Observer Stages}
 
-
-
-\section*{Enumeration}
-\begin{enumerate}
-\item The first topic is dull
-\item The second topic is duller
-\begin{enumerate}
-\item The first subtopic is silly
-\item The second subtopic is stupid
-\end{enumerate}
-\item The third topic is dullest
-\end{enumerate}
-
-\section*{itemize}
-\begin{itemize}
-\item The first topic is dull
-\item The second topic is duller
-\begin{itemize}
-\item The first subtopic is silly
-\item The second subtopic is stupid
-\end{itemize}
-\item The third topic is dullest
-\end{itemize}
-
-
+\begin{algorithm}
+\caption{Pseudo Code of an Observer Stage}
+\begin{algorithmic}[1]
+\REQUIRE Precondition: $m \ge y$
+\STATE Initialize: count = 0
+\IF{m clock cycle passed} 
+ \IF{W($\phi$) = 0} 
+ \STATE  /*evaluates finished calculation of $\phi$ after m clock cycles*/
+ \STATE  count = 0 
+ \ELSE
+  \STATE /*do nothing*/ 
+ \ENDIF
+\ENDIF 
+\STATE /*Following code executes every clock cycle*/
+\IF{count = $\tau+1$}
+ \STATE output = 1
+\ELSE
+ \STATE output = 0
+\ENDIF
+\STATE count = min(count + 1,$\tau + 1$)
+\end{algorithmic}
+\end{algorithm}
 
 
 
-\begin{landscape}
-
-
-\end{landscape}
