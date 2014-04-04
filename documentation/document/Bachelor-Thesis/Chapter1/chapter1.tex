@@ -165,11 +165,12 @@ calculated. Obviously, every represented execution time of W($\phi$) is the same
 This means, at every execution time (clock cycle) an observer stage is evaluating a signal W($\phi$) at that time. 
 In our case, signal W($\phi$) is apparently shifted by $y$ clock cycles to the right.
 This view is encouraged by the fact, that at the beginning of the monitoring, the observer stages have to wait, until
-the first value of the signal W($\phi$) is available which means that the first observer stage evaluates, 
-at execution time $e^y$, the first value of W($\phi$).
-The second observer stage evaluates, at execution time $e^{y+1}$, the second value of W($\phi$), and so on and so forth.
-Remember also, that an evaluation W($\phi$) relates to a propositional formula $\phi$, which was relevant y clock cycles before.
-\newpage
+the first valid value of the signal W($\phi$) is available for evaluation of any observer stage which is duly put at disposal.
+The following  observer stage evaluates, at execution time $e^{y+1}$, the second valid value of W($\phi$), and so on and so forth.
+It should be considered, that the evaluation of a signal value from W($\phi$) relates to a propositional formula $\phi$, which was relevant y clock cycles before.
+But it should also be mentioned that the signal values between execution time  $e^0$ and  $e^{y-1}$ are evaluated as well, but obviously 
+with a negative result, because no calculation can be started before any input is available.
+
 
 \begin{figure}[h] 
 \centering 
@@ -188,7 +189,7 @@ Remember also, that an evaluation W($\phi$) relates to a propositional formula $
    \vertlines{}
   \end{background}
 \end{tikztimingtable}
-\caption[3 Observer Stages with monitoring range $\tau=2$]{Example for 3 observer stages monitoring a signal W($\phi$),  $\tau$=2 }
+\caption[3 Observer Stages with monitoring range $\tau=2$]{Example for m=3 observer stages monitoring a signal W($\phi$),  $\tau$=2 }
 \label{fig:observer_example}
 \end{figure}
 
@@ -202,7 +203,7 @@ In Figure~\ref{fig:observer_example} we also see at which execution time the obs
 But this is only a preview about these observer stages. The algorithm about their real behaviour will be explained in the next chapter.
 The most important thing here is that these observers are working delayed. Every new observer stage starts its work after the observer stage before.
 This is important, because every clock cycle must be covered as long as the calculation of W($\phi$) takes. 
-The last signal shows us the invariance qualification $e^{n-y} \models \boxbox_\tau \phi$ for $\tau$=2, which holds at execution time $e^{15}$ and $e^{22}$,
+The last signal shows us the invariance qualification $e^{n-m} \models \boxbox_\tau \phi$ for $\tau$=2, which holds at execution time $e^{15}$ and $e^{22}$,
 but either for one cycle only.
 
 The invariance qualification will be resolved if we connect every observer stage in a binary ''and'' operation.
@@ -212,11 +213,11 @@ In Figure~\ref{fig:observer_example} the result is simply calculated with:
 \mbox{$\boxbox_2 \phi$ =  $Obs_0$ and  $Obs_1$  and  $Obs_2$}
 \end{center}
 \newpage
-Summarized,  every observer stage is included in a binary ''and'' operation as the and all these observer stages together are computing at every execution time $e^n$
-,if the logical consequence $e^{n-y} \models \boxbox_\tau \phi$ holds. 
+Summarized,  every observer stage is included in a binary ''and'' operation and all these observer stages together are computing at every execution time $e^n$
+,if the logical consequence $e^{n-m} \models \boxbox_\tau \phi$ holds. 
 If we consider all these observer stages together as one temporal (invariance before) operator,than this operator checks
-at every execution time  $e^n$ , the invariance qualification of the proposition $\phi$, $y$ clock cycles before.
-Regarding Figure~\ref{fig:observer_example}, it is true now if the proposition $\phi$ , y clock cycles before, was invariant with $\tau$=2 .
+at every execution time  $e^n$ , the invariance qualification of the proposition $\phi$, $m$ clock cycles before.
+Regarding Figure~\ref{fig:observer_example}, it is true now if the proposition $\phi$ , m clock cycles before, was invariant with $\tau$=2 .
 \newline
 
 \subsection{System Settings of the Invariant Observer Stages}

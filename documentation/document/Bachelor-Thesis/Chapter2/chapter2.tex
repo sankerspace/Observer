@@ -13,12 +13,15 @@
 
 \section{Algorithm of the Invariant Observer Stages}
 
+The following algorithm shows the proper behaviour of an observer stage.\newline
+
 \begin{algorithm}
 \caption{Pseudo Code of an Observer Stage}
+\label{alg:observerstage}
 \begin{algorithmic}[1]
-\REQUIRE Precondition: $m \ge y$
+\REQUIRE Precondition: $m \ge y$ and clock = 0
 \STATE Initialize: count = 0
-\IF{m clock cycle passed} 
+\IF{(clock mod m) = 0} 
  \IF{W($\phi$) = 0} 
  \STATE  /*evaluates finished calculation of $\phi$ after m clock cycles*/
  \STATE  count = 0 
@@ -33,8 +36,31 @@
  \STATE output = 0
 \ENDIF
 \STATE count = min(count + 1,$\tau + 1$)
+\RETURN output
 \end{algorithmic}
 \end{algorithm}
+
+As you can see in  Algorithm~\ref{alg:observerstage} the algorithm is separated in two main parts. 
+The upper part checks from the start of the observer stage, and periodically every m clock cycles,
+the status of the current signal value W($\phi$). If W($\phi$) has an active status, there is no change of
+the counter, but otherwise the counter will be reseted.
+This is important that one observer stage recognize that the invariance qualification was not satisfied
+at that time. If the conjunction of all observer stages is done, and at least on stage hast not an active output,
+than the result is false, which means no invariance qualification fulfilled at the time of the binary add operation. \newline
+
+The down part is executed at every clock cycle and counts up the counter to the maximum range of the invariance qualification.
+If the counter reaches that maximum, his output is set to an active state. The counter remains in the maximum level $\tau+1$ if
+nothing changes his value in the upper part of the algorithm. In fact, the counter represents the invariance qualification of length
+$\tau$, plus 1 indicates that the present value must be involved in the invariance qualification.\newline
+
+It should be mentioned that this current design does not implement or handle the calculations of the propositions $\phi$, 
+which is indicated with W($\phi$). On the other hand the observers from \cite{RTFMBJ13} are responsible to take the necessary inputs,
+calculate the atomic propositions (with ATCheckers) and evaluate immediately the ptMTL operator qualifications.  
+These steps have to be done in a tight time bound.
+
+  
+
+
 
 
 
