@@ -28,7 +28,7 @@
 \section{Overview of the Bachelor Thesis } %Section - 1.1 
 
 In embedded real time systems it is necessary to make efforts to verify a system design.
-A system design can be formalized by a mathematical specification for a dynamic system model.
+A system design can be formalized by a mathematical specification within a properly chosen dynamic system model.
 One approach to system design verification is a deduction, which shows that the design implies the requirements. 
 
 In critical Real Time Systems (RTS) timing constraints have to be considered in the requirement engineering.
@@ -37,8 +37,8 @@ Time constraints can be formulated as constraints on the duration of critical st
 A real time logic should be able to specify that real time constraints. Generally it seems that two main classes
 of real time logic are present, explicit or implicit temporal logic.\cite{210306} 
 
-Explicit temporal logic is an expression of a time variable. The time variable can be the representation of a time interval or a variable in temporal logic. 
-Implicit temporal logic (for example MTL - Metric Temporal Logic) is using temporal operators that constrain the extend of a state.
+Explicit temporal logic makes use of explicit expressions of time variables. The time variable can be the representation of a time interval or a variable in temporal logic. 
+Implicit temporal logic (for example MTL - Metric Temporal Logic) is using temporal operators that constrain the extent of a state.
 It is based on interval temporal logic and the duration concept.
 Implicit temporal logic can be very useful to express before/after relations between concurrent actions.
 For further details \cite{210306} can be a good source of information.
@@ -46,10 +46,10 @@ In runtime verification a monitor evaluates executions of a \textbf{System under
 The evaluation is formalised from a formal specification described in temporal logic.\newpage
 For ultra critical systems it is important to meet four major requirements:
 \begin{enumerate}
- \item Functionality : cannot change target's behaviour
- \item Certifiability: must avoid re-certification
- \item Timing :	  must not interfere with the target's timing
- \item Swap :     must not exhaust size, weight and power tolerance
+ \item Functionality:cannot change target's behaviour
+ \item Certifiability:must avoid re-certification
+ \item Timing:must not interfere with the target's timing
+ \item Swap:must not exhaust size, weight and power tolerance
 \end{enumerate}
 
 A \textbf{Runtime Verification Unit (RVU)} is a verification monitor that meets these four major requirements.
@@ -60,12 +60,12 @@ it evaluates the execution of a SUT and checks it for invariance conditions.
 My observer is an alternative  implementation of the invariant observer INVARIANT-SYMBOL published in \cite{RTFMBJ13},
 that bypasses the problem of resource limitation and makes use of the significant advantages of a highly parallel
 \textbf{Field Programmable Gate Array(FPGA)} hardware implementation.
-The most important difference is that my observer is not bounded to a specific $\tau$, but the observer in \cite{RTFMBJ13}
+The most important difference is that my observer is not bounded to a specific $\tau$, but the observers in \cite{RTFMBJ13}
 are bounded.This feature will be explained in the next section.
 
 In the publication ``\textbf{Real-Time Runtime Verification on Chip} '' \cite{RTFMBJ13} the concept of a RVU and 
-the principles of that Verification Framework are described in great detail.\newline\newline
-A survey about the functionality of the invariant observer in the following sections.
+the principles of that Verification Framework are described in greater detail.\newline\newline
+A survey about the functionality of the invariant observer is given in the following sections.
 
 
 
@@ -88,14 +88,14 @@ A survey about the functionality of the invariant observer in the following sect
 This section is a survey about the invariant observer and how it works.
 More details about the observer algorithm are presented in the next chapter. \newline
 The Invariant Observer acts like the temporal (invariant previously) operator $\boxbox_\tau \phi$
-of the Metric Temporal Logic (MTL) and is certainly restricted on the past (ptMTL).
+of the Metric Temporal Logic (MTL) and is certainly restricted to the past (ptMTL).
 Such a temporal operator takes an input $\phi$ , the calculation of a propositional
 formula, and evaluates if $\phi$ holds for the past $\tau$ execution times , including
 the current execution time in a discrete time setting.
 For example the logical consequence $e^n \models \boxbox_3 \phi$ expresses that
-the current execution $e^n$ (with n as the discrete execution time, n$\in\mathbb{N}$)
-is true iff (if and only if) the evaluation of $\phi$ is true now and was also true the last 
-$\tau=3$ execution times. In fact the $\boxbox_\tau \phi$ is a specialization of the 
+the operator $\boxbox_3 \phi$ is true at current time n iff (if and only if) 
+the evaluation of $\phi$ is true now and was also true the last 
+$\tau=3$ execution times. In fact  $\boxbox_\tau \phi$ is a specialization of the 
 $\boxdot_{[0,\tau]}\phi$ ptMTL operator which restricts the range of the invariance qualification.\newline
 Figure~\ref{fig:inv_example} and Figure~\ref{fig:inv_example_2} show an example for such a temporal operator.
  \newline
@@ -134,7 +134,7 @@ Figure~\ref{fig:inv_example} and Figure~\ref{fig:inv_example_2} show an example 
 \label{fig:inv_example_2}
 \end{figure}
 
-My approach of the invariant observer is based on some certain requirements.
+My approach of the invariant observer is based on  certain requirements.
 The following subsections will discuss these requirements.
  %******************* Subsection 1*******************
 \subsection{Arbitrary calculation time of logical proposition formulas}
