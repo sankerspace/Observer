@@ -1,4 +1,4 @@
-\chapter{Hardware Impelementation}
+\chapter{Hardware Implementation}
 
 % **************************** Define Graphics Path **************************
 \ifpdf
@@ -7,4 +7,27 @@
     \graphicspath{{Chapter3/Figs/Vector/}{Chapter3/Figs/}}
 \fi
 
+The following sections shows us an overview about the hardware implementation of the Invariant Observer Design.
+At first we get a description about the hardware platform on which the observer runs and some details
+about the synthesis tools.
+At the end of this chapter, there comes a design view about the synthesized hardware and a discussion about 
+the design steps.
+\section{Hardware Platform for Prototype}
+The Invariant Observer is synthesized on a Field Programmable Gate Array(FPGA),on this platform it was possible to get an insight
+about the runtime behaviour and to see the observers in action. 
+The FPGA Board that was used for the simulations is a \textbf{DE2-115} Board from ALTERA\cite{altera1}.
+This FPGA Board is ideal to illustrate fundamental concepts and advanced designs,and it gives us a possibiliy
+to meet the necessary real-time requirements we need. The DE2-115 is equipped with a \textbf{Cyclone IV EP4CE115F29} 
+FPGA Chip and it is powerful enough to emulate a CPU(Nios).In \cite{RTFMBJ13} this Fpga board was used for performance studies,besides other FPGA's,
+so it was logical to use a similar environment.
+The Board has an onboard oscillator of 50 Mhz,and with the use of a Phase Locked Loops(PLL) it is possible to increase the frequency for tests.
+In the following section we will see how the increase of the frequency changes the design on Register Transfer level(RTL) and why bad design decisions 
+can influence the maximal speed of the design.
 
+
+\section{Synthesis and Design  }
+This section gives us an overview about the synthesis tool and details about the Register Transfer Level design view.
+An interesting part in this section is to see how the synthesis tool creates hardware structures based on the code of the
+Observer VHDL implementation.\newline
+For synthesis and compilation of the observer vhdl code ,the \textbf{Altera Quartus II Version 12.1 Build 177 Full Version} was used.
+\subsection{Design View of the Register Transfer Level}
