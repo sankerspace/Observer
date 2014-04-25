@@ -3,7 +3,7 @@
 %*****************************************************************************************
 
 \chapter{Software Implementation and Algorithm}
-
+\label{chapter:2}
 %\ifpdf
 %    \graphicspath{{Chapter2/Figs/Raster/}{Chapter2/Figs/PDF/}{Chapter2/Figs/}}
 %\else
@@ -12,7 +12,7 @@
 
 
 \section{Algorithm of the Invariant Observer Stages}
-
+\label{chapter:sub:1}
 The following algorithm shows the proper behaviour of an observer stage.\newline
 
 \begin{algorithm}
@@ -48,8 +48,8 @@ at this time. If the conjunction of all observer stages is done,at any arbitrary
 than the result is false. This means that,at the execution time $n$,the invariance qualification is not fulfilled.
 The bottom part is executed at every clock cycle and increments the counter value up to the maximum range of the invariance qualification.
 If the counter reaches the maximum value,the respective observer stage activates his output to an active state. In fact,the counter represents the invariance qualification of length
-`$\tau$'. The term `$\tau + 1$' indicates that the present value must also be involved in the invariance qualification.
-The counter value will be initialized with zero at the beginning of the algorithm. Hypothetical,if counter is initalized with `$\tau + 1$' the ouptut is activated immediately,because
+'$\tau$'. The term '$\tau + 1$' indicates that the present value must also be involved in the invariance qualification.
+The counter value will be initialized with zero at the beginning of the algorithm. Hypothetical,if counter is initalized with '$\tau + 1$' the ouptut is activated immediately,because
 of the bottom algorithm. But this is an contradiction to the assumption that  W($\phi$)=0 for all execution time $n$ before 0.
 
 It should be mentioned that this current design does not implement or handle the calculations of the propositions $\phi$, 
@@ -58,8 +58,9 @@ calculate the atomic propositions (with ATCheckers) and immediately evaluate the
 These steps have to be done in a tight time bound.
 In our case,W($\phi$) must be updated from another entity in such a way,that at every clock cycle an observer stage must have a consistent value for evaluation.
 The following subsection is an overview about the Vhdl implementation of the Algorithm~\ref{alg:observerstage}.
-\section{VHDL Implementation of the Algorithm}  
 
+\section{VHDL Implementation of the Algorithm}  
+\label{chapter:sub:2}
 In Appendix A,there is an implementation in VHDL which follows the meaning of Algorithm~\ref{alg:observerstage}.
 We will discuss the different process entities,and the relations to the Algorithm~\ref{alg:observerstage}.
 Finally,we get an overview about the improvements which are significant for a faster design. 
@@ -90,7 +91,11 @@ If an activate state of \textbf{enable\_input} is recognized in the current cloc
 be active.   
 %\includepdf[]{Chapter2/Figs/PDF/Diagramm1.pdf}
 \begin{center}
-\includegraphics[width=300px]{Chapter2/Figs/Raster/Observer-stage.png}
+\begin{figure}[h]
+\label{fig:observerstages}
+\includegraphics[width=450px]{Chapter2/Figs/Raster/Observer-stage.png}
+\caption[Invariant Observer stages in cascade , m=4]{Example for m=4 Invariant Observer Stages concatenated in cascade. }
+\end{figure}
 \end{center}
 This ensures that the observers are working delayed in the meaning of time.
 The asynchronous part works immediately after every change of the system state.  
