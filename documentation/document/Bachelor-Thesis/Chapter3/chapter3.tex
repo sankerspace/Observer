@@ -30,27 +30,49 @@ This section gives us an overview about the synthesis tool and details about the
 An interesting part in this section is to see how the synthesis tool creates hardware structures based on the code of the
 Observer VHDL implementation.\newline
 For synthesis and compilation of the observer vhdl code ,the \textbf{Altera Quartus II Version 12.1 Build 177 Full Version} was used.
-\subsection{Design View on the Register Transfer Level}
+\subsection{Design View of the Register Transfer Level}
 In Quartus II ,after compilation of the design and after creation of the netlists,you can use a tool,named \textbf{RTL Viewer},which shows how
 the components of the design will be created on a Hardware Platform. It is an abstract view on the \textbf{Register Transfer Level}.
 This tool can be very handy if you want to see how the hardware should look like. Based on the illustration of the hardware,some decisions can
 be reconsidered in the meaning of the performance. \newline
 Figure~\ref{fig:test:only:50:obs0} is a hardware plan of a single observer stage (m=1),which is modeled as a single Observer with input frequency of 50Mhz.
 How the test system was modeled for that case,will be discussed in the next chapter.
-One important fact,that have to be considered,is that the signal path from the beginning of the observer entity until the end should be as short as possible.
-Let's overview some important design decisions.\newline
+The next Figure~\ref{fig:test:only:150:obs0} shows exact the same design case like Figure~\ref{fig:test:only:50:obs0} but with the difference that the input frequency is 150Mhz.
+Here we can see how the synthese tool reorientates the hardware design,to meet the requirements of that clock speed. The worst case path determines the maximum frequency,which can drive
+that design. 
+A more detail description about the timing model is in the next subsection.
+\subsection{Timing Model of the Design}
+One important thing that have to be considered is that the signal path from the beginning of the observer entity to the end should be as short as possible.
+Let's overview some important design facts.\newline
 The maximum frequency of the whole system is determinded by the longest path of the design. This results that the performance of a system is determined by the maximum frequency
 it can be driven. It is logical that,at every entity in the netlist,the path should be as short as possible.
 The performance maximum can be computed by the Quartus Tool named \textbf{TimeQuest Timing Analyzer},which gives estimations about the maximum frequency of the design.
-The ĺongest signal path of the design is indicated by the \textbf{worst case path} in the tool. \newline
+The ĺongest signal path of the design is indicated by the \textbf{worst case path} in the tool,as mentioned in the last subsection. \newline
 The first version of the observer stage had a low performance niveau. This version is illustrated in the Appendix~\ref{fig:version:one:obs}.
-The TimeQuest Timing Analyzer consider some uncertainties for the performance estimations.From \cite{altera2} there was a decription found from Altera,how the timing model is 
-build in the Quartus II Tool. 
+The TimeQuest Timing Analyzer consider some uncertainties for the performance estimations.From \cite{altera2} we know how the Quartus Tool creates timing models which are
+build in the TimeQuest Timing Analyzer after compilation of that design.
 A Fpga have to operate in a continuum of conditions. These conditions include the die junction temperature,which varies.
 Commercial parts have a range of 0°C to 85°C and industrials a bigger range. 
-A second condition aspect is the voltage supply level.
+A second condition aspect is the voltage supply level. Critical voltages for maintaining FPGA performance is the Vcc and the various I/O supplies.
+\newline
+The timing analyzer shows estimations for three cases
+\begin{enumerate}
+\item Slow 1200mv 85°C model
+\item Slow 1200mv 0°C model
+\item Fast 1200mv 0°C model
+\end{enumerate}
 
+The operating-condition corners are usually the combinations of end points of the ranges in temperature, voltage and manufacturing processes.
+Each operating-condition is used to model the timing delays under specific end point of temperature, voltage, and manufacturing process conditions.
+The first case with ''Slow 1200mv 85°C model'' seems natural and should be considered for our test cases, because it shows frequencies under long term 
+operating conditions.
+A lot of tests about estimations of the maximum frequency of different design cases,are always took from that ''Slow 1200mv 85°C model'',and have to be considered
+for further discussions.In the next chapter these tests will be discussed.
 
+\subsection{Design Decisions}
+
+After the VHDl Code was finished of the observer stage,some perfomance and optimizations decision had to be reconsidered.
+The most important thing is to separate synchronous and asynchronous design.
 
 \begin{figure}[]
 \centering
@@ -68,19 +90,8 @@ A second condition aspect is the voltage supply level.
 %\vspace{-5cm}
 \includegraphics[width=650px,height=300px,angle=-90]{../../pictures/22.02.2014/onlyObserver/OBS_150M.jpg}
 \caption[RTL View of Observer 0 with clock 150Mhz]{Shows a RTL View of a single observer stage with input clock of 150Mhz}
-\label{fig:test:only:50:obs0}
+\label{fig:test:only:150:obs0}
 \end{figure}
 
-\newpage
-The timing analyzer shows estimations for three cases
-\begin{enumerate}
-\item Slow 1200mv 85°C model
-\item Slow 1200mv 0°C model
-\item Fast 1200mv 0°C model
-\end{enumerate}
 
-The operating-condition corners are usually the combinations of end points of the ranges in temperature, voltage and manufacturing processes.
-Each operating-condition is used to model the timing delays under specific end point of temperature, voltage, and manufacturing process conditions.
-The first case with ''Slow 1200mv 85°C model'' seems natural to be considered for our test cases, because it shows frequencies under long term 
-operating conditions. 
 \section{Troubles and Mistakes in the development}
