@@ -20,9 +20,9 @@ This FPGA Board is ideal to illustrate fundamental concepts and advanced designs
 to meet the necessary real-time requirements we need. The DE2-115 is equipped with a \textbf{Cyclone IV EP4CE115F29} 
 FPGA Chip and it is powerful enough to emulate a CPU(Nios).In \cite{RTFMBJ13} this Fpga board was used for performance studies,besides other FPGA's,
 so it was logical to use a similar environment.
-The Board has an onboard oscillator of 50 Mhz,and with the use of a Phase Locked Loops(PLL) it is possible to increase the frequency for tests.
+The Board has an onboard oscillator of 50 Mhz,and with the use of a Phase Locked Loop(PLL) it is possible to increase the working frequency for tests.
 In the following section we will see how the increase of the frequency changes the design on Register Transfer level(RTL) and why bad design decisions 
-can influence the maximal speed of the design. In Appendix~\ref{appendix:3:1} there is an schema illustration about the components of that FPGA board.
+can influence the maximal speed of the design. In Appendix~\ref{appendix:3} there is an schema illustration about the components of that FPGA board.
 
 
 \section{Synthesis and Design}
@@ -31,11 +31,11 @@ An interesting part in this section is to see how the synthesis tool creates har
 Observer VHDL implementation.\newline
 For synthesis and compilation of the observer vhdl code ,the \textbf{Altera Quartus II Version 12.1 Build 177 Full Version} was used.
 \subsection{Design View on the Register Transfer Level}
-In Quartus II ,after compilation of the design and after creation of the netlists,there is a tool,named \textbf{RTL Viewer}, which shows how
-the components of the design will be created on Hardware Platform. It is an abstract view on the \textbf{Register Transfer Level}.
+In Quartus II ,after compilation of the design and after creation of the netlists,you can use a tool,named \textbf{RTL Viewer},which shows how
+the components of the design will be created on a Hardware Platform. It is an abstract view on the \textbf{Register Transfer Level}.
 This tool can be very handy if you want to see how the hardware should look like. Based on the illustration of the hardware,some decisions can
 be reconsidered in the meaning of the performance. \newline
-Figure~\ref{fig:test:only:50:obs0} is a hardware plan of a single observer stage m=1,which is modeled as a single Observer with input frequency of 50Mhz.
+Figure~\ref{fig:test:only:50:obs0} is a hardware plan of a single observer stage (m=1),which is modeled as a single Observer with input frequency of 50Mhz.
 How the test system was modeled for that case,will be discussed in the next chapter.
 One important fact,that have to be considered,is that the signal path from the beginning of the observer entity until the end should be as short as possible.
 Let's overview some important design decisions.\newline
@@ -44,8 +44,11 @@ it can be driven. It is logical that,at every entity in the netlist,the path sho
 The performance maximum can be computed by the Quartus Tool named \textbf{TimeQuest Timing Analyzer},which gives estimations about the maximum frequency of the design.
 The ĺongest signal path of the design is indicated by the \textbf{worst case path} in the tool. \newline
 The first version of the observer stage had a low performance niveau. This version is illustrated in the Appendix~\ref{fig:version:one:obs}.
-The TimeQuest Timing Analyzer consider some uncertainties for the performance estimations.A Fpga have to operate in a continuum of conditions. These conditions 
-include the die junction temperature,which varies.Commercial parts have a range of 0°C to 85°C and industrials a bigger range.A second condition aspect is voltage supply level.
+The TimeQuest Timing Analyzer consider some uncertainties for the performance estimations.From \cite{altera2} there was a decription found from Altera,how the timing model is 
+build in the Quartus II Tool. 
+A Fpga have to operate in a continuum of conditions. These conditions include the die junction temperature,which varies.
+Commercial parts have a range of 0°C to 85°C and industrials a bigger range. 
+A second condition aspect is the voltage supply level.
 
 
 
@@ -75,4 +78,9 @@ The timing analyzer shows estimations for three cases
 \item Slow 1200mv 0°C model
 \item Fast 1200mv 0°C model
 \end{enumerate}
+
+The operating-condition corners are usually the combinations of end points of the ranges in temperature, voltage and manufacturing processes.
+Each operating-condition is used to model the timing delays under specific end point of temperature, voltage, and manufacturing process conditions.
+The first case with ''Slow 1200mv 85°C model'' seems natural to be considered for our test cases, because it shows frequencies under long term 
+operating conditions. 
 \section{Troubles and Mistakes in the development}
