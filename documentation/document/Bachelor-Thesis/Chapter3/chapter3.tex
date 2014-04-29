@@ -69,10 +69,39 @@ operating conditions.
 A lot of tests about estimations of the maximum frequency of different design cases,are always took from that ''Slow 1200mv 85°C model'',and have to be considered
 for further discussions.In the next chapter these tests will be discussed.
 
-\subsection{Design Decisions}
+\subsection{Design Decisions based on Register Transfer level}
 
-After the VHDl Code was finished of the observer stage,some perfomance and optimizations decision had to be reconsidered.
-The most important thing is to separate synchronous and asynchronous design.
+After the first time,the VHDL Code of the observer stage was behavioural correct,some perfomance and optimization decisions had to be reconsidered.
+The most important thing is to separate synchronous and asynchronous design.At the beginning,it was necessary to split a completely synchronous design,where
+every action is triggered after every clock cycle.A more parallel approach has to be done where only state changes are done synchronously,but other actions should
+be triggered immediately after a change of a system state.And the asychronous system part can seperated in several independent asynchronous components,which achieves more 
+system parallelism and a better performance.It should be mentioned again,from chapter 2,that this system design is similar to a moore state machine,where the logic 
+is seperated in a transition logic,an output logic,and a state memory.And only the state memory is changed on every clock cycle.\newline
+Our design approach of the invariant observer is similar,but with the difference that the output logic contains transition logic components.
+The hardware schemas from the Register Transfer Level plans where beneficial,because it shows which components where created from the vhdl background.
+If statements should be created in a way,that allow no Latches.This means that every else branch should contain the same components like the if branch.
+If you follow that rule,you can see for example the created mutexes in Figure~\ref{fig:test:only:50:obs0}.Every mutex has two inputs(according to if,else),which are
+selected depending on the third input(MUX21).\newline
+At the beginning of the entity ther are several adders,and these stands for the different addition 
+which has to be done according to the behaviour of the observer.\textbf{Add2} emulates $cycle\_next=cycle+1$ ,\textbf{Add1} emulates "$cycle\_next=cycle-1$" and \textbf{Add3} 
+emulates "$count\_p=count\_p+1$" according to the sourcecode of the Observer Stages in Appendix~\ref{appendix:source:2}.
+In Figure~\ref{fig:test:only:50:obs0},the MUX 21 a the beginning indicated by \textbf{cycle\_next[15..0]} is the if branch ,according sourcecode in Appendix~\ref{appendix:source:2},
+which decides if "$cycle=0$" or not. \newline
+The \textbf{MUX21[cycle\_next[31..16]]} below stands for the branch "if ($cycle=observernumber$)".\newline
+\textbf{MUX21[cycle\_next[15..0]]} decrements cycle\_next in normal case,but increments it only once at the bottom border. 
+\textbf{MUX21[cycle\_next[31..16]]} works the opposite way.
+As you can see, the tool enhanced cycle\_next up to 48bit to reserver memory for 
+interim results. \newline
+In the hardware scheme,there are two another \textbf{MUX21[cycle\_next[15..0]]},the first(left to right) decides between  "$cycle\_next=cycle+1$" or "$cycle\_next=cycle-1$" and the second 
+between that resultling decision before and the reset value.\textbf{MUX21[cycle\_next[47..32]]} decides between keeping the old value "$cycle\_next=cycle$" or 
+taking over the value from \textbf{MUX21[cycle\_next[31..16]]}.The overview is similar to count\_p,but a deeper insight about the Quartus translation behaviour would exceed that subsection.
+As you can see in the hardware schema, there are 5 registers(cycle,count\_p,direction,output,enable\_out) and these representate the state of the Invariant Observer and they only change their values
+after every clock\_cycle. 
+The dimensions of the registers are conform to the dimensions of the input conditions.
+For example if inc\_tau has a value with only 5 bits,then count\_p is accodrdingly large-dimensioned to 6 Bit. 
+This is only a cut-out,about how the Quartus II translate the incoming VHDL Code.
+A lot of other hardware representations are shown in Appendix~\ref{appendix:2},actually they have the same components but another orientations.
+The next subsection shows us something about the problems I had during the progress of that development.
 
 \begin{figure}[]
 \centering
@@ -83,7 +112,6 @@ The most important thing is to separate synchronous and asynchronous design.
 \label{fig:test:only:50:obs0}
 \end{figure}
 
-
 \begin{figure}[]
 \centering
 %\hspace{3.0cm}
@@ -93,5 +121,11 @@ The most important thing is to separate synchronous and asynchronous design.
 \label{fig:test:only:150:obs0}
 \end{figure}
 
+\newpage
+\section{Design problems in the development}
 
-\section{Troubles and Mistakes in the development}
+This subsection is only a kind of a protocoll about problems during the development.
+\begin{enumerate}
+\item The starting condition of the Algorithm~\ref{chapter:sub:1} was not clear,the question was should 
+count be initialised with 0 ot with ($\tau + 1$).
+\end{enumerate}
