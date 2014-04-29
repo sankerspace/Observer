@@ -83,11 +83,11 @@ If statements should be created in a way,that allow no Latches.This means that e
 If you follow that rule,you can see for example the created mutexes in Figure~\ref{fig:test:only:50:obs0}.Every mutex has two inputs(according to if,else),which are
 selected depending on the third input(MUX21).\newline
 At the beginning of the entity ther are several adders,and these stands for the different addition 
-which has to be done according to the behaviour of the observer.\textbf{Add2} emulates $cycle\_next=cycle+1$ ,\textbf{Add1} emulates "$cycle\_next=cycle-1$" and \textbf{Add3} 
+which has to be done according to the behaviour of the observer.\textbf{Add2} emulates $cycle\_next=cycle+1$ ,\textbf{Add1} emulates "$cycle\_next=cycle-1$" and \textbf{Add3}\\ 
 emulates "$count\_p=count\_p+1$" according to the sourcecode of the Observer Stages in Appendix~\ref{appendix:source:2}.
 In Figure~\ref{fig:test:only:50:obs0},the MUX 21 a the beginning indicated by \textbf{cycle\_next[15..0]} is the if branch ,according sourcecode in Appendix~\ref{appendix:source:2},
 which decides if "$cycle=0$" or not. \newline
-The \textbf{MUX21[cycle\_next[31..16]]} below stands for the branch "if ($cycle=observernumber$)".\newline
+The \textbf{MUX21[cycle\_next[31..16]]} below stands for the branch "if $cycle=observernumber$".
 \textbf{MUX21[cycle\_next[15..0]]} decrements cycle\_next in normal case,but increments it only once at the bottom border. 
 \textbf{MUX21[cycle\_next[31..16]]} works the opposite way.
 As you can see, the tool enhanced cycle\_next up to 48bit to reserver memory for 
