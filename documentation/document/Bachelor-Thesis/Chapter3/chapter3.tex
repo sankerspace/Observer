@@ -126,6 +126,26 @@ The next subsection shows us something about the problems I had during the progr
 
 This subsection is only a kind of a protocoll about problems during the development.
 \begin{enumerate}
-\item The starting condition of the Algorithm~\ref{chapter:sub:1} was not clear,the question was should 
-count be initialised with 0 ot with ($\tau + 1$).
+\item The starting condition of the Algorithm~\ref{alg:observerstage} was uncertain,the question was,should variable
+count be initialised with 0 ot with ($\tau + 1$).If count=($\tau + 1$) then the output is immediately switched on,which
+correspond to an invariance qualification.If we go back to the specification of an observer from \cite{RTFMBJ13},we know from
+the proof of Theorem1(in \cite{RTFMBJ13}) that $\forall i:(i \in [max(0,n-\tau),n] \rightarrow e^i \models \phi)$ which follows 
+that at the beginning of an execution if $ni-\tau$ exceeds th bottom border,but the signal $\phi$ is true,the invariance qualification
+is fulfilled by that specification. 
+This condition only holds if signal $\phi$ is knows at that time,in our case the status of signal $\phi$ is always(if $m \ge 1$) taken from the past.
+So it is not known which status signal $\phi$ has before execution time $e^0$.Hence,we initialised the Algorithm~\ref{alg:observerstage} in a kind of,so that
+no decisions about invariance qualification can made.
+\item I tested the Invariance Observer with a  self-made signalgenerator which imitates input $\phi$.As a result,I created two clock domains,although the clock signals
+came from the same PLL(Phase Locked Loop).If one clock is an "even" multiple of the other clock frequency,there was no problem,but if the clock frequencies are choosed in a different way,then
+it comes to clock drifts.
+\item The file (*.sdc file)for timings must always be adjusted,if there are changes in one of the clock domains.The PLL output Timings have to be analyzed separately by the
+TimeQuest Timing Analyzer.If this does not happen,you get false estimations for "Slow 1200mv 85°C model" maximum frequencies and worst case paths.
+\item The first download of the compliated design to the FPGA was no succesfull,because the Quartus Tool was not correctly adjusted to that plattfom.
+Following points have to be changed:
+\begin{itemize}
+\item The correct architecture must be set
+\item the voltage must be set for all inputs and outputs
+\end{itemize}
+\item Always consider what is the active state of an input component or output component,for example
+input KEY is low active and was used for reseting the board. 
 \end{enumerate}
