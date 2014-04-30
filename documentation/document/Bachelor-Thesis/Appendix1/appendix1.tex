@@ -10,8 +10,8 @@ Figure~\ref{fig:observerstages} shows us an excerpt of the input and output but 
 \newline
 Observer\_behave.vhd describes the exact behaviour of an observer stage. A detailed description of this behaviour is shown in  Chapter~\ref{chapter:sub:2}.
 %\lstinputlisting[language=VHDL]{../../../../vhdl/Observer.vhd}
-
-
+\begin{comment}
+%\phantomsection\addcontentsline{toc}{figure}{Entity Design of Invariant Observer}
 \includepdf[
  pages={-},
  nup=1x1,
@@ -19,19 +19,20 @@ Observer\_behave.vhd describes the exact behaviour of an observer stage. A detai
  %fitpaper=true,
  %noautoscale=false,
  turn=false,
- scale=1.6, 
+ scale=1.5, 
  %trim= 0mm 0mm 0mm 0mm,
  clip=true,
- pagecommand={\label{appendix:source:1}},
+ %pagecommand={\label{appendix:source:1}},
+ pagecommand={},
  %delta=0mm 0mm
- offset=-80mm 0mm,
+ offset=-80mm 10mm,
  %addtotoc={1,figure,1,{Entity Design of Invariant Observer},{appendix:source:1}}
 ]{Appendix1/pdf/Observer_2.pdf}
 %\caption[Entity Design of Invariant Observer]{Code of Observer Entity Design}
 %\label{appendix:source:1}
 
 
-
+%\phantomsection\addcontentsline{toc}{figure}{Behavioural Design of Invariant Observer}
 \includepdf[
  pages={-},
  nup=1x1,
@@ -42,11 +43,30 @@ Observer\_behave.vhd describes the exact behaviour of an observer stage. A detai
  scale=0.9,
  %trim= 0mm 0mm 0mm 0mm,
  clip=true,
- pagecommand={\label{appendix:source:2}},
+ %pagecommand={\label{appendix:source:2}},
+ pagecommand={},
  %delta=0mm 0mm
  %offset=-80mm 0mm
- %addtotoc={2,figure,1,{Behavioural Design of Invariant Observer},{appendix:source:2}}
+ %addtotoc={1,figure,1,{Behavioural Design of Invariant Observer},{appendix:source:2}}
 ]{Appendix1/pdf/Observer_behave_2.pdf}
 %\caption[Behavioural Design of Invariant Observer]{Code of the Behavioural Design of the Invariant Observer }
 %\label{appendix:source:2}
+\end{comment}
+
+%\section{Entity Design}
+\begin{figure}[pt]
+\centering
+\includegraphics[scale=1.0]{Appendix1/pdf/Observer_2.pdf}
+\caption[Entity Design of Invariant Observer]{Code of Observer Entity Design}
+\label{appendix:source:1}
+\end{figure}
+
+%\section{Behavioural Design}
+\begin{figure}[pt]
+\begin{center}
+\includegraphics[scale=0.80,angle=90]{Appendix1/pdf/Observer_behave_2.pdf}
+\end{center}
+\caption[Behavioural Design of Invariant Observer]{Code of the Behavioural Design of an Invariant Observer }
+\label{appendix:source:2}
+\end{figure}
 
