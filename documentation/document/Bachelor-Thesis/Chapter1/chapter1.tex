@@ -35,7 +35,7 @@ In critical Real Time Systems (RTS) timing constraints have to be considered in 
 Such Real Time Systems are modelled by states changing over time.
 Time constraints can be formulated as constraints on the duration of critical states. 
 A real time logic should be able to specify that real time constraints. Generally it seems that two main classes
-of real time logic are present,explicit or implicit temporal logic.\cite{210306} 
+of real time logic are present, explicit or implicit temporal logic.\cite{210306} 
 
 Explicit temporal logic makes use of explicit expressions of time variables. The time variable can be the representation of a time interval or a variable in temporal logic. 
 Implicit temporal logic (for example MTL - Metric Temporal Logic) is using temporal operators that constrain the extent of a state.
@@ -46,24 +46,24 @@ In runtime verification a monitor evaluates executions of a \textbf{System under
 The evaluation is formalised from a formal specification described in temporal logic.\newpage
 For ultra critical systems it is important to meet four major requirements:
 \begin{enumerate}
- \item Functionality:cannot change target's behaviour
- \item Certifiability:must avoid re-certification
+ \item Functionality: cannot change target's behaviour
+ \item Certifiability: must avoid re-certification
  \item Timing:must not interfere with the target's timing
- \item Swap:must not exhaust size,weight and power tolerance
+ \item Swap:must not exhaust size, weight and power tolerance
 \end{enumerate}
 
 A \textbf{Runtime Verification Unit (RVU)} is a verification monitor that meets these four major requirements.
-As part of this requirements,the RVU must be separated from SUT.
+As part of this requirements, the RVU must be separated from SUT.
 In fact it is a synthesized hardware that monitors the execution of a SUT.\newline
-The topic of my thesis ``Hardware Implementation of an Invariant Observer'' can also be considered as a RVU,
-it evaluates the execution of a SUT and checks it for invariance conditions.
-My observer is an alternative implementation of the invariant observer INVARIANT-SYMBOL published in \cite{RTFMBJ13},
+The topic of my thesis ``Hardware Implementation of an Invariant Observer'' can also be considered as a RVU, 
+it evaluates the execution of a SUT and checks it for invariance conditions. 
+My observer is an alternative implementation of the invariant observer INVARIANT-SYMBOL published in \cite{RTFMBJ13}, 
 that bypasses the problem of resource limitation and makes use of the significant advantages of a highly parallel
 \textbf{Field Programmable Gate Array(FPGA)} hardware implementation.
-The most important difference is that my observer is not bounded to a specific $\tau$,but the observers in \cite{RTFMBJ13}
+The most important difference is that my observer is not bounded to a specific $\tau$, but the observers in \cite{RTFMBJ13}
 are bounded.This feature will be explained in the next section.
 
-In the publication ``\textbf{Real-Time Runtime Verification on Chip} '' \cite{RTFMBJ13} the concept of a RVU and 
+In the publication ``\textbf{Real-Time Runtime Verification on Chip}'' \cite{RTFMBJ13} the concept of a RVU and 
 the principles of that Verification Framework are described in greater detail.\newline\newline
 A survey about the functionality of the invariant observer is given in the following sections.
 
@@ -89,8 +89,8 @@ This section is a survey about the invariant observer and how it works.
 More details about the observer algorithm are presented in the next chapter. \newline
 The Invariant Observer acts like the temporal (invariant previously) operator $\boxbox_\tau \phi$
 of the Metric Temporal Logic (MTL) and is certainly restricted to the past (ptMTL).
-Such a temporal operator takes an input $\phi$,the calculation of a propositional
-formula,and evaluates if $\phi$ holds for the past $\tau$ execution times,including
+Such a temporal operator takes an input $\phi$, the calculation of a propositional
+formula, and evaluates if $\phi$ holds for the past $\tau$ execution times, including
 the current execution time in a discrete time setting.
 For example the logical consequence $e^n \models \boxbox_3 \phi$ expresses that
 the operator $\boxbox_3 \phi$ is true at current time n iff (if and only if) 
@@ -143,16 +143,16 @@ of a propositional formula $\phi$ could take several clock cycles (execution tim
 This means that an observer has to wait until the calculation of the proposition is finished.
 In \cite{RTFMBJ13} the observer needs to guarantee that it finishes evaluation of atomic propositions
 within a tight time bound.
-In our case,if we start calculation of a propositional formula $\phi$ at every clock cycle and the 
-calculation itself needs $y$ clock cycles,than we need at least $y$ observer stages to cover finished calculations at every clock cycle. 
+In our case, if we start calculation of a propositional formula $\phi$ at every clock cycle and the 
+calculation itself needs $y$ clock cycles, than we need at least $y$ observer stages to cover finished calculations at every clock cycle. 
 These observer stages are part of the whole observer.
-After $y$ clock cycles,at every following clock cycle,a calculation of $\phi$ will be available. 
-At least one observer stage will be ready,too,to evaluate a calculation $\phi$ at any time.
-In other words,we are implementing temporal pipeline stages that represent components of the
+After $y$ clock cycles, at every following clock cycle, a calculation of $\phi$ will be available. 
+At least one observer stage will be ready, too, to evaluate a calculation $\phi$ at any time.
+In other words, we are implementing temporal pipeline stages that represent components of the
 invariant operator and these components together are evaluating the invariance qualification of the proposition $\phi$.
-We don't have one observer,in fact the observer is composed from several observer stages.
+We don't have one observer, in fact the observer is composed from several observer stages.
 %As a matter of fact,the calculation of a logical proposition $\phi$ can take as long as necessary.
-As a matter of fact,this solution only requires the calculation time of a proposition $\phi$ to be bounded by some previously known time y.
+As a matter of fact, this solution only requires the calculation time of a proposition $\phi$ to be bounded by some previously known time y.
 
 Propositional formulas can be composed from several other complex propositional subformulas or atomic propositions.
 In some cases a subformula is waiting for the resolution of an another subformula.
@@ -161,16 +161,16 @@ in sense of the abstract domain of logahedron.
 
 \subsection{Pipelined Observer Stages}
 Consider every finished calculation of a propositional formula $\phi$ as a signal value 
-of the signal W($\phi$),every value in that signal is timely ordered just in the order it was
-calculated. Obviously,every represented execution time of W($\phi$) is the same as the execution time of the Observer. 
-This means,at every execution time (clock cycle) an observer stage is evaluating a signal W($\phi$) at that time. 
-In our case,signal W($\phi$) is apparently shifted by $y$ clock cycles to the right.
-This view is encouraged by the fact,that at the beginning of the monitoring,the observer stages have to wait,until
+of the signal W($\phi$), every value in that signal is timely ordered just in the order it was
+calculated. Obviously, every represented execution time of W($\phi$) is the same as the execution time of the Observer. 
+This means, at every execution time (clock cycle) an observer stage is evaluating a signal W($\phi$) at that time. 
+In our case, signal W($\phi$) is apparently shifted by $y$ clock cycles to the right.
+This view is encouraged by the fact, that at the beginning of the monitoring, the observer stages have to wait, until
 the first valid value of the signal W($\phi$) is available for evaluation of any observer stage which is duly put at disposal.
-The following observer stage evaluates,at execution time $n=y+1$,the second valid value of W($\phi$),and so on and so forth.
-It should be considered,that the evaluation of a signal value from W($\phi$) relates to a propositional formula $\phi$,which was relevant y clock cycles before.
-But it should also be mentioned that the signal values between execution time $n=0$ and $n=y-1$ are evaluated as well,but obviously 
-with a negative result,because no calculation can be started before any input is available.
+The following observer stage evaluates, at execution time $n=y+1$, the second valid value of W($\phi$), and so on and so forth.
+It should be considered, that the evaluation of a signal value from W($\phi$) relates to a propositional formula $\phi$, which was relevant y clock cycles before.
+But it should also be mentioned that the signal values between execution time $n=0$ and $n=y-1$ are evaluated as well, but obviously 
+with a negative result, because no calculation can be started before any input is available.
 
 
 \begin{figure}[h] 
@@ -195,30 +195,30 @@ with a negative result,because no calculation can be started before any input is
 \end{figure}
 
 The example in Figure~\ref{fig:observer_example} shows that the calculation of the first value from W($\phi$) needs $y$
-execution times. So no value is defined in the cycles before. If we take the view only from the proposition $\phi$ as a signal,then we calculate
-at every execution time $n$,from the latest inputs and subformulas at that time,exactly the proposition $\phi$ at that moment.
+execution times. So no value is defined in the cycles before. If we take the view only from the proposition $\phi$ as a signal, then we calculate
+at every execution time $n$, from the latest inputs and subformulas at that time, exactly the proposition $\phi$ at that moment.
 But this holds under the assumption that the result of such a calculation is available immediately.
-The signal W($\phi$) shows us,what happens if calculations of proposition $\phi$ need some time,here we assume $y$=3 clock cycles.
-As mentioned,W($\phi$) is like signal $\phi$ shifted to the right.
+The signal W($\phi$) shows us, what happens if calculations of proposition $\phi$ need some time, here we assume $y$=3 clock cycles.
+As mentioned, W($\phi$) is like signal $\phi$ shifted to the right.
 In Figure~\ref{fig:observer_example} we also see at which execution time the observer stages evaluate the signal W($\phi$).
 But this is only a preview about these observer stages. The algorithm about their real behaviour will be explained in the next chapter.
 The most important thing here is that these observers are working delayed. Every new observer stage starts its work after the observer stage before.
-This is important,because every clock cycle must be covered as long as the calculation of W($\phi$) takes. 
-The last signal shows us the invariance qualification $e^{n-m} \models \boxbox_\tau \phi$ for $\tau$=2,which holds at execution time $n=15$ and $n=22$,
+This is important, because every clock cycle must be covered as long as the calculation of W($\phi$) takes. 
+The last signal shows us the invariance qualification $e^{n-m} \models \boxbox_\tau \phi$ for $\tau$=2, which holds at execution time $n=15$ and $n=22$, 
 but either for one cycle only.
 
-The invariance qualification will be resolved if we connect every observer stage in a binary ''and'' operation.
+The invariance qualification will be resolved if we connect every observer stage in a binary ``and'' operation.
 In Figure~\ref{fig:observer_example} the result is simply calculated with:
 \newline
 \begin{center} 
 \mbox{$\boxbox_2 \phi$ = $Obs_0$ and $Obs_1$ and $Obs_2$}
 \end{center}
 \newpage
-Summarized, every observer stage is included in a binary ''and'' operation and all these observer stages together are computing at every execution time $n$
-,if the logical consequence $e^{n-m} \models \boxbox_\tau \phi$ holds. 
-If we consider all these observer stages together as one temporal (invariance before) operator,than this operator checks
-at every execution time $n$,the invariance qualification of the proposition $\phi$,$m$ clock cycles before.
-Regarding Figure~\ref{fig:observer_example},it is true now if the proposition $\phi$,m clock cycles before,was invariant with $\tau$=2 .
+Summarized, every observer stage is included in a binary "and" operation and all these observer stages together are computing at every execution time $n$
+, if the logical consequence $e^{n-m} \models \boxbox_\tau \phi$ holds. 
+If we consider all these observer stages together as one temporal (invariance before) operator, than this operator checks
+at every execution time $n$, the invariance qualification of the proposition $\phi$, $m$ clock cycles before.
+Regarding Figure~\ref{fig:observer_example}, it is true now if the proposition $\phi$, m clock cycles before, was invariant with $\tau$=2 .
 \newline
 
 \subsection{System Settings of the Invariant Observer Stages}
@@ -226,17 +226,17 @@ Regarding Figure~\ref{fig:observer_example},it is true now if the proposition $\
 This was a brief introduction about the specific behaviour of the invariant observer as a whole. We will next detail on the parameter settings.
 It starts with the question of how many observer stages do we actually need ? We already know that at least y are necessary.
 If we have to define a number of observer stages with variable ''m'' then the following condition must be hold: $m \ge y$.
-Depending on how long the calculation of a proposition $\phi$ needs,a minimum of y observer stages are necessary,but upwards 
+Depending on how long the calculation of a proposition $\phi$ needs, a minimum of y observer stages are necessary, but upwards 
 can be chosen arbitrarily. This shows us also the possibility to apply the Observer with his observer stages
 on different evaluations of system inputs despite the time they need and it works in real time.
-If we use only one observer stage (means immediate evaluation of $\phi$),then it works as a native invariant operator.\newline
+If we use only one observer stage (means immediate evaluation of $\phi$), then it works as a native invariant operator.\newline
 
-The next interesting aspect,and maybe the most powerful argument of this design way,is the invariance parameter $\tau$.
+The next interesting aspect, and maybe the most powerful argument of this design way, is the invariance parameter $\tau$.
 The number of observer stages ''m'' stays in no relation to the invariance parameter $\tau$. Following conditions are possible:
-$m \ge \tau$ or $m < \tau$. As long as the observer is configured to cover the computation time of W($\phi$),it can be
+$m \ge \tau$ or $m < \tau$. As long as the observer is configured to cover the computation time of W($\phi$), it can be
 used for every arbitrary choice of $\tau$. In \cite{RTFMBJ13} this setting is fixed.
-My implementation of an invariant observer is able to change that parameter during run-time,but this feature is not 
-specified in the requirements,and should be treated as such.\newline
+My implementation of an invariant observer is able to change that parameter during run-time, but this feature is not 
+specified in the requirements, and should be treated as such.\newline
 
 The next chapter shows the algorithm of the observer stages and how every observer stage works. 
 Also a representation of the software implementation will be explained in great detail.
