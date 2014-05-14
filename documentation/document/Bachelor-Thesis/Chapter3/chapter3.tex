@@ -1,5 +1,4 @@
 \chapter{Hardware Implementation}
-
 % **************************** Define Graphics Path **************************
 \ifpdf
     \graphicspath{{Chapter3/Figs/Raster/}{Chapter3/Figs/PDF/}{Chapter3/Figs/}}
@@ -47,7 +46,7 @@ to meet the requirements of that clock speed. The worst case path determines the
 A more detailed description about the timing model is in the next subsection. 
 \subsection{Timing Model of the Design}
 One important thing that have to be considered is that the signal path from the beginning of the observer entity to the end should be as short as possible,  
-this concludes to some important design facts. \newline
+this concludes to some important design facts.
 The maximum frequency of the whole system is limited by the longest path of the design, which means that the performance of a system is expressed by the maximum frequency at which it may be operated. 
 So it should be logical for every entity in the netlist, to keep the signal path as short as possible. 
 The performance maximum can be computed by the Quartus Tool named \textbf{TimeQuest Timing Analyzer}, which gives estimations about the maximum frequency of the design. 
@@ -152,4 +151,4 @@ Following points had to be changed:
 \end{itemize}
 \item It should be always considered what is the active state of an input component or output component, for example
 input KEY is low active and it was used to reset the FPGA board. 
-\end{enumerate}
+\end{enumerate} 
