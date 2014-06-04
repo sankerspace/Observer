@@ -1,5 +1,9 @@
 \chapter{Experiments and Testing}
 
+%% NO PERSONAL FORMS us,we,I
+%% quotes use like : ``text''
+%% after point,doublepoints and commas there must be a BLANK SPACE
+
 % **************************** Define Graphics Path **************************
 \ifpdf
     \graphicspath{{Chapter3/Figs/Raster/}{Chapter3/Figs/PDF/}{Chapter3/Figs/}}
@@ -19,9 +23,38 @@ discussed in the chapter before. \\
 This section should be considered as a description about the questions ``Which result do we gain from these experiments?'' and ``How are the experiments done?''. 
 
 \subsection{Reasoning and Meaning}
-The Invariant Observer will interact in an environment where at least soft real-time,but rather hard real-time conditions,should be fullfilled.
-The simulation and tests show something about the correct behaviour of the implementation and 
-
+The Invariant Observer will interact in an environment where at least soft real-time, but rather hard real-time conditions, should be fullfilled.
+The first step, to show  correct behaviour of the algorithm and the resulting VHDL Implementation, are simulations. But it should be mentioned that no 
+clear assertions can be made about correct timings. This question relies on the part of experiments. How the simulations and experiments were done, and which insights
+they produced, will be discussed in the next subsection.
+To present a first proof about correct principle of the Invariant Observer it was necessary to synthesize the VHDL Implementation to get a prototype.
+A FPGA was the best solution, besides other possibilities like ASIC's or a Microcontroller. An ASIC (Application-specific integrated circuit) is the most performant solution, but
+that solution is hardwired and any change of the design is very expensive. But it could be considered as the final product implementation.
+A Microcontroller would never reach the performance of a FPGA and FPGA's are more cost effective and nearly performant like hardwired solutions. 
+Any change of the design can be easily downloaded on a FPGA Board, so it seems logical to use FPGA's as protoyping platform.
+One important aspect of the experiments was to show the timings of the design. 
+for example to show the maximum performance on a FPGA board like the DE2-115, which was used for the expriments, as already mentioned.
+But other FPGA's with stronger abilities could reach better performance goals. In \cite{RTFMBJ13} several FPGA models were used to show that aspect.      
+A further aspect was to show the ability of handling any propositional formula $\phi$, which is composed of several possible input signals.
+The evaluation of $\phi$ takes time, maybe several clock cycles. That circumstance was not exactly tested, but a different approach was
+tried to show the same way. A more exact test could be done if this work will be continued.
+The next subsection will explain the actual investigations of the experiments in great detail.  
+\subsection{Build-up of Experiments}
+At first some facts about the Invariant Observer will be repeated, to give a better understanding about the tests that were made.
+The Invariant Observer consist of several Observer Stages. Every Observer Stage hast to wait, at least the time needed to evalaute a proposition $\phi$, until
+th evaluation finished. To cover every clock cycle $e^n$, where a finished computation of a proposition $W(\phi)$ will be evaluated, we need least as many Observer Stages, as
+the computation (m clock cycles) needs. To remind, the observer stages are not responsible for the computation of the propositions(like in \cite{RTFMBJ13}),
+but for the final evaluation of the status of the computation.
+So it seems logical to create a signal $\phi$ which gives, at every clock cycle, a pseudo evaluation of an proposition $\phi$. 
+After that it was easy to show the correct beahviour of the Invariant Observer. 
+For example we have m=3 Observer (means theoretical that the evaluation needs 3 clock cycles), and want to show the invariance of signal $\phi$, actually the finished computation $W(\phi)$,
+with $\tau = 10$. That 3 Observer Stages shows whether the $W(\phi)$ was invariant 10 clock cycles before and the current clock cycle.
+The experiments have been exercised with a plain implementation of a signal $W(\phi)$ and with a more complex implementation of $W(\phi)$, which gives a stronger argument of the correct behaviour.
+More about that in the simulation section and experiment section.
+That two versions of simulating the input signal of the observer are justified with the fact, that the Quartus synthesis tool could create distinct implementations of the Observer Design, because it must
+match the correct timing behaviours. This will be discussed in the experiment section       
+The experiments consists of a plain Observer Stage with different configurations with the plain input and the complex input. The same with several Observer Stages.
+The next section gives us an insight about the simulations.
 %
 %A) Reason for tests (behaviour,design improvements,faster design)
 %\subsection{}
@@ -34,6 +67,9 @@ The simulation and tests show something about the correct behaviour of the imple
 %
 %% + SOMETHING ABOUT sIGNALGENERATOR
 \section{Simulations}
+To simulate the VHDL Design of the Observer Stages and its test environment(also in VHDL) the ModelSim (Version 10.1d) from MentorGraphics was used.  
+A testbench in ModelSim gives a quick overview about the correct behaviour of the intended algorithm and it was usefull for debugging and error detection.
+As mentioned in the section before, a complex signalgenerator should 
 %C)Simulations
 \section{Experiments}
 %D)Test Case Observer alone(multiple Frequencies) -,with signalgenerator
