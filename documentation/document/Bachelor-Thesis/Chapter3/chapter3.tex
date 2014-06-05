@@ -1,4 +1,5 @@
 \chapter{Hardware Implementation}
+\label{chapter:3}
 % **************************** Define Graphics Path **************************
 \ifpdf
     \graphicspath{{Chapter3/Figs/Raster/}{Chapter3/Figs/PDF/}{Chapter3/Figs/}}
@@ -25,7 +26,7 @@ FPGA Chip and it is powerful enough to emulate a CPU(ex. Nios from Altera). In \
 so it was logical to use a similar environment. 
 The \textbf{DE2-115} has an on-board oscillator of 50 Mhz and in combination with a Phase Locked Loop(PLL) it is possible to increase the operating frequency for advanced tests. 
 In the following section it will be shown, how enhanced frequencies can change the design on the Register Transfer level(RTL) and why bad design decisions 
-can influence the maximal speed of a design. In Appendix~\ref{appendix:3} there is a schema illustration about the components of the \textbf{DE2-115} FPGA board. 
+can influence the maximal speed of a design. In Appendix~\ref{appendix:4} there is a schema illustration about the components of the \textbf{DE2-115} FPGA board. 
 
 
 \section{Synthesis and Design}
@@ -103,7 +104,7 @@ and these representates the state of the Invariant Observer and they may only ch
 The dimensions of the registers are conform to the dimensions of the input conditions. 
 For example if inc\_tau has a value with only 5 bits, then count\_p is accordingly large-dimensioned to 6 Bit. 
 This is only a cut-out, about how the Quartus II translates VHDL Code. 
-A lot of other hardware representations are shown in Appendix~\ref{appendix:2}, actually they have the same components but another orientations. 
+A lot of other hardware representations are shown in Appendix~\ref{appendix:3}, actually they have the same components but another orientations. 
 The next subsection shows something about problems during the progress of that development. 
 
 \begin{figure}[]

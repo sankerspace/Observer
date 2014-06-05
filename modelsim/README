@@ -1,0 +1,4 @@
+# project.tcl
+# create the ModelSim project from scratch in the current directory
+#
+# usage: vsim -c -do project.tcl
