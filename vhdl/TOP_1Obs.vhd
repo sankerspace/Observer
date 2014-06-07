@@ -90,9 +90,9 @@ FOR OBS_0 : observer
 signal clk_s  	 	:  std_logic	:='0';
 signal clk_g		:  std_logic	:='0';
 signal reset_s  	:  std_logic	:='0';
-signal enable_s	        :  std_logic	:='0';
+signal enable_s	:  std_logic	:='0';
 signal phi_s		:  std_logic	:='0';
-signal next_obs_s       :  std_logic	:='0';
+signal next_obs_s :  std_logic	:='0';
 -------------------------------------------------------------------------------
 -- <BEGIN_1> 
 signal add0	    :std_logic:='0';
@@ -117,7 +117,7 @@ begin
 
   PLL: component AltPLc --??: maybe reduce to only needed clocks
   --PORT MAP (areset => reset_s,inclk0 => CLOCK_50 ,c0 => clk_g,c1 =>clk_s) ;
-  PORT MAP (areset => reset_s,inclk0 => CLOCK_50    ) ;
+  PORT MAP (areset => reset_s,inclk0 => CLOCK_50 , c0 => clk_s, c1 => clk_g  ) ;
   
 -------------------------------------------------------------------------------
 -- <BEGIN_2> 
@@ -136,8 +136,8 @@ OBS_0:  observer GENERIC MAP(observernumber => x"0001")
 
   
 	
- clk_g <= c0;
- clk_s <= c1;
+ --clk_g <= CLOCK_50;
+ --clk_s <= CLOCK_50;
   reset_s <= not KEY(0);
   --GPIO(0) <= clk_s; 	
   GPIO(0) <= reset_s;

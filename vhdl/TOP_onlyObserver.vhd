@@ -16,9 +16,10 @@ use IEEE.std_logic_misc.all;
 entity top_onlyObserver is
 
 port (
-   CLOCK_50                            	:in	std_logic;
+   CLOCK_50          :in	std_logic;
    KEY					:in 	std_logic_vector(3 downto 0) ;
-   GPIO   				:out    std_logic_vector(34 downto 0) );
+   GPIO   				:out    std_logic_vector(34 downto 0) 
+  );
 
 end entity;
 
@@ -27,7 +28,7 @@ end entity;
 --------------------------------------------------------------------------
 architecture rtl of top_onlyObserver is
 
-constant  tau_range	:integer := 10;	
+constant  tau_range	:integer := 255;	
 
 component Altpla is
   PORT(
@@ -81,7 +82,7 @@ FOR OBS_0 : observer
 --  <END_0>
 -------------------------------------------------------------------------------
   
-signal clk  	 	:  std_logic	:='0';
+signal clk_s  	 	:  std_logic	:='0';
 signal reset_s  	:  std_logic	:='0';
 signal enable_s	        :  std_logic	:='0';
 signal phi_s		:  std_logic	:='0';
@@ -104,13 +105,13 @@ begin
  
 
   PLL: component AltPLa --??: maybe reduce to only needed clocks
-  PORT MAP (areset => reset_s,inclk0 => CLOCK_50 ,c3 => clk) ;
+  PORT MAP (areset => reset_s,inclk0 => CLOCK_50 ,c0 => clk_s) ;
  -- PORT MAP (areset => reset_s,inclk0 => CLOCK_50    ) ;
   
 -------------------------------------------------------------------------------
 -- <BEGIN_2> 
 OBS_0:  observer GENERIC MAP(observernumber => x"0001")
-    PORT MAP ( output=>add0,clk=>clk,reset =>reset_s, enable_in =>enable_s,invariance_tau => tau_s,signal_phi=> phi_s,enable_out=> next_obs_s) ;
+    PORT MAP ( output=>add0,clk=>clk_s,reset =>reset_s, enable_in =>enable_s,invariance_tau => tau_s,signal_phi=> phi_s,enable_out=> next_obs_s) ;
 
 -- <END_2>
 -------------------------------------------------------------------------------		
@@ -124,7 +125,7 @@ OBS_0:  observer GENERIC MAP(observernumber => x"0001")
 
   
 	
- 
+	
   reset_s <= not KEY(0);
   --GPIO(0) <= clk_s; 	
   GPIO(0) <= reset_s;
@@ -133,11 +134,11 @@ OBS_0:  observer GENERIC MAP(observernumber => x"0001")
   --GPIO(3) <= en2;	
   --GPIO(4) <= en3;		
   --GPIO(5) <= en4;	
-  GPIO(6) <= next_obs_s;  
+  --GPIO(6) <= next_obs_s;  
   --GPIO(7) <= clk_g;
   GPIO(8) <= phi_s;	
-  GPIO(9)<= clk;
-  GPIO(10) <= add0;	
+  --GPIO(9)<= clk;
+  --GPIO(10) <= add0;	
   --GPIO(10) <= add(0);		
   --GPIO(11) <= add(1);		
   --GPIO(12) <= add(2);		
@@ -151,9 +152,9 @@ OBS_0:  observer GENERIC MAP(observernumber => x"0001")
   
 
   
-  sync:process(clk)
+  sync:process(clk_s)
   begin
-    if(clk'event and clk='1') then
+    if(clk_s'event and clk_s='1') then
       if reset_s ='0' then
         enable_s <= '1';
 				phi_s <= not phi_s;

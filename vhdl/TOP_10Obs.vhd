@@ -27,19 +27,19 @@ end entity;
 --------------------------------------------------------------------------
 architecture rtl of top_10Obs is
 
-constant  tau_range	:integer := 1;	
+constant  tau_range	:integer := 20;	
 
-component Altpla is
-  PORT(
-    areset	    : IN STD_LOGIC  := '0';
-    inclk0	    : IN STD_LOGIC  := '0';
-    c0		    : OUT STD_LOGIC ; -- 50Mhz
-    c1		    : OUT STD_LOGIC ; -- 100Mhz
-    c2		    : OUT STD_LOGIC ; -- 120 Mhz
-    c3		    : OUT STD_LOGIC ; -- 150 Mhz
-    c4		    : OUT STD_LOGIC  --  200 Mhz
-  );
-end component;  
+--component Altpla is
+--  PORT(
+--    areset	    : IN STD_LOGIC  := '0';
+--    inclk0	    : IN STD_LOGIC  := '0';
+--    c0		    : OUT STD_LOGIC ; -- 50Mhz
+--    c1		    : OUT STD_LOGIC ; -- 100Mhz
+--    c2		    : OUT STD_LOGIC ; -- 120 Mhz
+--    c3		    : OUT STD_LOGIC ; -- 150 Mhz
+--    c4		    : OUT STD_LOGIC  --  200 Mhz
+ -- );
+--end component;  
   
   
 --component Altplb is
@@ -55,6 +55,19 @@ end component;
 --		locked		: OUT STD_LOGIC 
 --	);
 --end component; 
+
+component Altplc is
+  PORT(
+    areset	    : IN STD_LOGIC  := '0';
+    inclk0	    : IN STD_LOGIC  := '0';
+    c0		    : OUT STD_LOGIC ; -- 50Mhz
+    c1		    : OUT STD_LOGIC ; -- 50Mhz
+    c2		    : OUT STD_LOGIC ; -- 100 Mhz
+    c3		    : OUT STD_LOGIC   -- 100 Mhz
+  );
+end component;  
+  
+
   
 component signalgenerator is 
   port(
@@ -143,9 +156,9 @@ begin
       clk => clk_g 
       );
 
-  PLL: component AltPLa --??: maybe reduce to only needed clocks
-  --PORT MAP (areset => reset_s,inclk0 => CLOCK_50 ,c0 => clk_g,c1 =>clk_s) ;
-  PORT MAP (areset => reset_s,inclk0 => CLOCK_50    ) ;
+  PLL: component AltPLc --??: maybe reduce to only needed clocks
+  PORT MAP (areset => reset_s,inclk0 => CLOCK_50 ,c1 => clk_g,c0 =>clk_s) ;
+  --PORT MAP (areset => reset_s,inclk0 => CLOCK_50   ) ;
   
 -------------------------------------------------------------------------------
 -- <BEGIN_2> 
@@ -182,8 +195,8 @@ output_s <= and_reduce(add);
 
   
 	
- clk_g <= CLOCK_50;
- clk_s <= CLOCK_50;
+ --clk_g <= CLOCK_50;
+ --clk_s <= CLOCK_50;
   reset_s <= not KEY(0);
   --GPIO(0) <= clk_s; 	
   GPIO(0) <= reset_s;
