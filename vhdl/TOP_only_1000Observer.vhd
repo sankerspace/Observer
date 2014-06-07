@@ -29,7 +29,7 @@ end entity;
 --------------------------------------------------------------------------
 architecture rtl of top_only_1000Observer is
 
-constant  tau_range	:integer := 255;	
+constant  tau_range	:integer := 1;	
 
 component Altpla is
   PORT(
@@ -3103,7 +3103,7 @@ begin
  
 
   PLL: component AltPLa --??: maybe reduce to only needed clocks
-  PORT MAP (areset => reset_s,inclk0 => CLOCK_50 ,c0 => clk_s) ;
+  PORT MAP (areset => reset_s,inclk0 => CLOCK_50 ,c1 => clk_s) ;
  -- PORT MAP (areset => reset_s,inclk0 => CLOCK_50    ) ;
   
 -------------------------------------------------------------------------------

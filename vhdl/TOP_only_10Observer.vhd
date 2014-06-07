@@ -133,7 +133,7 @@ begin
  
 
   PLL: component AltPLa --??: maybe reduce to only needed clocks
-  PORT MAP (areset => reset_s,inclk0 => CLOCK_50 ,c0 => clk_s) ;
+  PORT MAP (areset => reset_s,inclk0 => CLOCK_50 ,c4 => clk_s) ;
  -- PORT MAP (areset => reset_s,inclk0 => CLOCK_50    ) ;
   
 -------------------------------------------------------------------------------
