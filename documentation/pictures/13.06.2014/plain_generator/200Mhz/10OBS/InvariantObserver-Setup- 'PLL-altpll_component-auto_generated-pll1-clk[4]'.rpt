@@ -1,0 +1,140 @@
+Setup: 'PLL|altpll_component|auto_generated|pll1|clk[4]' report for InvariantObserver
+Fri Jun 13 16:54:08 2014
+Quartus II 64-Bit Version 12.1 Build 177 11/07/2012 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Slow 1200mV 85C Model Setup: 'PLL|altpll_component|auto_generated|pll1|clk[4]'
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2012 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Slow 1200mV 85C Model Setup: 'PLL|altpll_component|auto_generated|pll1|clk[4]'                                                                                                                               ;
++--------+---------------------------+----------------------------+-------------------------------------------------+-------------------------------------------------+--------------+------------+------------+
+; Slack  ; From Node                 ; To Node                    ; Launch Clock                                    ; Latch Clock                                     ; Relationship ; Clock Skew ; Data Delay ;
++--------+---------------------------+----------------------------+-------------------------------------------------+-------------------------------------------------+--------------+------------+------------+
+; -1.149 ; observer:OBS_5|cycle[8]   ; observer:OBS_5|cycle[14]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 6.068      ;
+; -1.130 ; observer:OBS_5|cycle[8]   ; observer:OBS_5|cycle[15]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 6.049      ;
+; -1.101 ; observer:OBS_5|cycle[12]  ; observer:OBS_5|cycle[14]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 6.020      ;
+; -1.089 ; enable_s                  ; observer:OBS_0|cycle[15]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 2.500        ; 0.064      ; 3.651      ;
+; -1.082 ; observer:OBS_5|cycle[12]  ; observer:OBS_5|cycle[15]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 6.001      ;
+; -1.072 ; enable_s                  ; observer:OBS_0|cycle[14]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 2.500        ; 0.064      ; 3.634      ;
+; -1.063 ; observer:OBS_5|cycle[13]  ; observer:OBS_5|cycle[14]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.982      ;
+; -1.057 ; observer:OBS_5|cycle[2]   ; observer:OBS_5|cycle[14]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.976      ;
+; -1.053 ; observer:OBS_5|cycle[0]   ; observer:OBS_5|cycle[14]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.972      ;
+; -1.044 ; observer:OBS_5|cycle[13]  ; observer:OBS_5|cycle[15]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.963      ;
+; -1.038 ; observer:OBS_5|cycle[2]   ; observer:OBS_5|cycle[15]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.957      ;
+; -1.034 ; observer:OBS_5|cycle[0]   ; observer:OBS_5|cycle[15]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.953      ;
+; -1.017 ; observer:OBS_5|cycle[8]   ; observer:OBS_5|cycle[12]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.936      ;
+; -1.002 ; observer:OBS_5|cycle[10]  ; observer:OBS_5|cycle[14]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.921      ;
+; -0.999 ; observer:OBS_5|cycle[5]   ; observer:OBS_5|cycle[14]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.918      ;
+; -0.998 ; observer:OBS_5|cycle[8]   ; observer:OBS_5|cycle[13]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.917      ;
+; -0.983 ; observer:OBS_5|cycle[10]  ; observer:OBS_5|cycle[15]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.902      ;
+; -0.980 ; observer:OBS_5|cycle[5]   ; observer:OBS_5|cycle[15]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.899      ;
+; -0.969 ; observer:OBS_5|cycle[12]  ; observer:OBS_5|cycle[12]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.888      ;
+; -0.964 ; enable_s                  ; observer:OBS_0|count_p[12] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 2.500        ; 0.061      ; 3.523      ;
+; -0.964 ; enable_s                  ; observer:OBS_0|count_p[13] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 2.500        ; 0.061      ; 3.523      ;
+; -0.957 ; enable_s                  ; observer:OBS_0|cycle[13]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 2.500        ; 0.064      ; 3.519      ;
+; -0.950 ; observer:OBS_5|cycle[12]  ; observer:OBS_5|cycle[13]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.869      ;
+; -0.949 ; observer:OBS_5|cycle[7]   ; observer:OBS_5|cycle[14]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.868      ;
+; -0.940 ; enable_s                  ; observer:OBS_0|cycle[12]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 2.500        ; 0.064      ; 3.502      ;
+; -0.931 ; observer:OBS_5|cycle[13]  ; observer:OBS_5|cycle[12]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.850      ;
+; -0.930 ; observer:OBS_5|cycle[7]   ; observer:OBS_5|cycle[15]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.849      ;
+; -0.925 ; observer:OBS_5|cycle[2]   ; observer:OBS_5|cycle[12]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.844      ;
+; -0.921 ; observer:OBS_5|cycle[0]   ; observer:OBS_5|cycle[12]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.840      ;
+; -0.912 ; observer:OBS_5|cycle[13]  ; observer:OBS_5|cycle[13]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.831      ;
+; -0.906 ; observer:OBS_5|cycle[2]   ; observer:OBS_5|cycle[13]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.825      ;
+; -0.902 ; observer:OBS_5|cycle[0]   ; observer:OBS_5|cycle[13]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.821      ;
+; -0.885 ; observer:OBS_5|cycle[8]   ; observer:OBS_5|cycle[10]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.804      ;
+; -0.870 ; observer:OBS_5|cycle[10]  ; observer:OBS_5|cycle[12]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.789      ;
+; -0.867 ; observer:OBS_5|cycle[5]   ; observer:OBS_5|cycle[12]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.786      ;
+; -0.866 ; observer:OBS_5|cycle[8]   ; observer:OBS_5|cycle[11]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.785      ;
+; -0.851 ; observer:OBS_5|cycle[10]  ; observer:OBS_5|cycle[13]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.770      ;
+; -0.848 ; observer:OBS_5|cycle[5]   ; observer:OBS_5|cycle[13]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.767      ;
+; -0.847 ; observer:OBS_5|cycle[4]   ; observer:OBS_5|cycle[14]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.766      ;
+; -0.838 ; phi_s~_Duplicate_1        ; observer:OBS_7|count_p[4]  ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 2.500        ; -0.118     ; 3.218      ;
+; -0.838 ; phi_s~_Duplicate_1        ; observer:OBS_7|count_p[5]  ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 2.500        ; -0.118     ; 3.218      ;
+; -0.838 ; phi_s~_Duplicate_1        ; observer:OBS_7|count_p[6]  ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 2.500        ; -0.118     ; 3.218      ;
+; -0.838 ; phi_s~_Duplicate_1        ; observer:OBS_7|count_p[7]  ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 2.500        ; -0.118     ; 3.218      ;
+; -0.837 ; observer:OBS_5|cycle[12]  ; observer:OBS_5|cycle[10]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.756      ;
+; -0.828 ; observer:OBS_5|cycle[4]   ; observer:OBS_5|cycle[15]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.747      ;
+; -0.825 ; enable_s                  ; observer:OBS_0|cycle[11]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 2.500        ; 0.064      ; 3.387      ;
+; -0.819 ; phi_s~_Duplicate_1        ; observer:OBS_4|count_p[3]  ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 2.500        ; -0.119     ; 3.198      ;
+; -0.819 ; phi_s~_Duplicate_1        ; observer:OBS_4|count_p[0]  ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 2.500        ; -0.119     ; 3.198      ;
+; -0.818 ; observer:OBS_5|cycle[12]  ; observer:OBS_5|cycle[11]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.737      ;
+; -0.817 ; observer:OBS_5|cycle[7]   ; observer:OBS_5|cycle[12]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.736      ;
+; -0.808 ; enable_s                  ; observer:OBS_0|cycle[10]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 2.500        ; 0.064      ; 3.370      ;
+; -0.799 ; observer:OBS_5|cycle[13]  ; observer:OBS_5|cycle[10]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.718      ;
+; -0.798 ; observer:OBS_5|cycle[7]   ; observer:OBS_5|cycle[13]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.717      ;
+; -0.793 ; observer:OBS_5|cycle[2]   ; observer:OBS_5|cycle[10]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.712      ;
+; -0.789 ; observer:OBS_5|cycle[0]   ; observer:OBS_5|cycle[10]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.708      ;
+; -0.780 ; observer:OBS_5|cycle[13]  ; observer:OBS_5|cycle[11]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.699      ;
+; -0.774 ; observer:OBS_5|cycle[2]   ; observer:OBS_5|cycle[11]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.693      ;
+; -0.770 ; observer:OBS_5|cycle[0]   ; observer:OBS_5|cycle[11]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.689      ;
+; -0.753 ; observer:OBS_5|cycle[8]   ; observer:OBS_5|cycle[8]    ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.672      ;
+; -0.746 ; observer:OBS_5|cycle[6]   ; observer:OBS_5|cycle[14]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.665      ;
+; -0.738 ; observer:OBS_5|cycle[10]  ; observer:OBS_5|cycle[10]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.657      ;
+; -0.735 ; observer:OBS_5|cycle[5]   ; observer:OBS_5|cycle[10]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.654      ;
+; -0.734 ; observer:OBS_5|cycle[8]   ; observer:OBS_5|cycle[9]    ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.653      ;
+; -0.727 ; observer:OBS_5|cycle[6]   ; observer:OBS_5|cycle[15]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.646      ;
+; -0.724 ; observer:OBS_5|cycle[11]  ; observer:OBS_5|cycle[14]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.643      ;
+; -0.719 ; observer:OBS_5|cycle[10]  ; observer:OBS_5|cycle[11]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.638      ;
+; -0.718 ; observer:OBS_0|count_p[2] ; observer:OBS_0|count_p[12] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.520     ; 5.196      ;
+; -0.718 ; observer:OBS_0|count_p[2] ; observer:OBS_0|count_p[13] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.520     ; 5.196      ;
+; -0.716 ; observer:OBS_5|cycle[5]   ; observer:OBS_5|cycle[11]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.635      ;
+; -0.715 ; observer:OBS_5|cycle[4]   ; observer:OBS_5|cycle[12]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.634      ;
+; -0.705 ; observer:OBS_5|cycle[11]  ; observer:OBS_5|cycle[15]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.624      ;
+; -0.705 ; observer:OBS_5|cycle[12]  ; observer:OBS_5|cycle[8]    ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.624      ;
+; -0.696 ; observer:OBS_5|cycle[4]   ; observer:OBS_5|cycle[13]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.615      ;
+; -0.693 ; enable_s                  ; observer:OBS_0|cycle[9]    ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 2.500        ; 0.064      ; 3.255      ;
+; -0.686 ; observer:OBS_5|cycle[12]  ; observer:OBS_5|cycle[9]    ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.605      ;
+; -0.685 ; observer:OBS_5|cycle[7]   ; observer:OBS_5|cycle[10]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.604      ;
+; -0.680 ; observer:OBS_0|cycle[11]  ; observer:OBS_0|cycle[14]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.080     ; 5.598      ;
+; -0.676 ; enable_s                  ; observer:OBS_0|cycle[8]    ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 2.500        ; 0.064      ; 3.238      ;
+; -0.669 ; observer:OBS_0|cycle[10]  ; observer:OBS_0|cycle[14]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.080     ; 5.587      ;
+; -0.667 ; observer:OBS_5|cycle[13]  ; observer:OBS_5|cycle[8]    ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.586      ;
+; -0.666 ; observer:OBS_5|cycle[7]   ; observer:OBS_5|cycle[11]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.585      ;
+; -0.661 ; observer:OBS_0|cycle[11]  ; observer:OBS_0|cycle[15]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.080     ; 5.579      ;
+; -0.661 ; observer:OBS_5|cycle[2]   ; observer:OBS_5|cycle[8]    ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.580      ;
+; -0.658 ; observer:OBS_0|cycle[13]  ; observer:OBS_0|cycle[14]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.080     ; 5.576      ;
+; -0.657 ; observer:OBS_5|cycle[0]   ; observer:OBS_5|cycle[8]    ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.576      ;
+; -0.650 ; observer:OBS_0|cycle[10]  ; observer:OBS_0|cycle[15]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.080     ; 5.568      ;
+; -0.648 ; observer:OBS_5|cycle[13]  ; observer:OBS_5|cycle[9]    ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.567      ;
+; -0.642 ; observer:OBS_5|cycle[2]   ; observer:OBS_5|cycle[9]    ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.561      ;
+; -0.639 ; observer:OBS_0|cycle[13]  ; observer:OBS_0|cycle[15]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.080     ; 5.557      ;
+; -0.638 ; observer:OBS_5|cycle[0]   ; observer:OBS_5|cycle[9]    ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.557      ;
+; -0.622 ; observer:OBS_0|cycle[7]   ; observer:OBS_0|cycle[14]   ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.080     ; 5.540      ;
+; -0.621 ; observer:OBS_5|cycle[8]   ; observer:OBS_5|cycle[6]    ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 5.000        ; -0.079     ; 5.540      ;
+; -0.617 ; phi_s~_Duplicate_1        ; observer:OBS_4|count_p[2]  ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 2.500        ; -0.119     ; 2.996      ;
+; -0.617 ; phi_s~_Duplicate_1        ; observer:OBS_4|count_p[4]  ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 2.500        ; -0.119     ; 2.996      ;
+; -0.617 ; phi_s~_Duplicate_1        ; observer:OBS_4|count_p[5]  ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 2.500        ; -0.119     ; 2.996      ;
+; -0.617 ; phi_s~_Duplicate_1        ; observer:OBS_4|count_p[6]  ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 2.500        ; -0.119     ; 2.996      ;
+; -0.617 ; phi_s~_Duplicate_1        ; observer:OBS_4|count_p[7]  ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 2.500        ; -0.119     ; 2.996      ;
+; -0.617 ; phi_s~_Duplicate_1        ; observer:OBS_4|count_p[8]  ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 2.500        ; -0.119     ; 2.996      ;
+; -0.617 ; phi_s~_Duplicate_1        ; observer:OBS_4|count_p[9]  ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 2.500        ; -0.119     ; 2.996      ;
+; -0.617 ; phi_s~_Duplicate_1        ; observer:OBS_4|count_p[10] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; PLL|altpll_component|auto_generated|pll1|clk[4] ; 2.500        ; -0.119     ; 2.996      ;
++--------+---------------------------+----------------------------+-------------------------------------------------+-------------------------------------------------+--------------+------------+------------+
+
+

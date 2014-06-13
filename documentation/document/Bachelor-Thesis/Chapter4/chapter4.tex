@@ -21,7 +21,7 @@ discussed in the chapter before. \\
 
 \section{Reasoning and Environment of Experiments}
 \label{chapter:4:section:1}
-This section should be considered as a description about the questions ``Which result do we gain from these experiments?'' and ``How are the experiments done?''. 
+This section should be considered as a description about the questions ``Which results do we gain from these experiments?'' and ``How are the experiments done?''. 
 
 \subsection{Reasoning and Meaning}
 \label{chapter:4:section:1:subsection:1}
@@ -199,7 +199,7 @@ with 10 Observer (m=10) which are observing Invariance of $\tau = 1$ on signal p
 Figure~\ref{fig:logicanalyzer:m10:t1:2} illustrates the same behaviour like the pictures before. \\
 Figure~\ref{fig:logicanalyzer:m10:t1:2} also shows how the Observer Stages are switched on, one by one. 
 Signal \textbf{enable\_start} shows the start of that start-up sequence, important to see the behaviour as part of the Algorithm~\ref{alg:observerstage} that 
-every Observer Stage turns on the next following Observer Stage after one clock cycle as illustrated by Figure~\ref{fig:observerstages}. 
+every Observer Stage turns on the next following Observer Stage after one clock cycle as illustrated by Figure~\ref{fig:observerstages}. \\
 \begin{figure}[]
 \centering
 %\hspace{-3.0cm}
@@ -223,9 +223,62 @@ The next subsection shows a chain of experiments which could be argued as ``What
 
 \subsection{Maximum Performance}
 \label{chapter:4:section:3:subsection:2}
-This subsection discuss the maximum possible performance of the Observer Stage Design under involvement of the limitation by the DE2-115 FPGA Board.
+This subsection discusses the maximum possible performance of the Observer Stage Design under involvement of the limitation by the DE2-115 FPGA Board.
+The following testchain comprise the Invariant Observer Design and a plain Signalgenerator, which only changes the signalvalue of his output in every clock cycle.
+For this experiment it was important that the Quartus II tool take his main focus on the Observer circuit, and estimations of the Slow 1200mv 85°C model depends
+only on the Observer Design.
+Another modification is that the Phase-Locked Loop (PLL) is used actively, which means that the clock frequency of the Observer Design will be increased.
+For every increase of the clock frequency, the number of implemented Observer Stages will be increased too, to see the maximum performance of that kind of configuration and
+it should be mentioned that the maximum range of Invariance $\tau = 255$ is used.
+But some experiment cases may have additional tests with another Invariance $\tau$ where you can see the differences in the performance. 
+Similar to the previous subsection, $f_{max}$ means the maximum frequency according to the Slow 1200mv 85°C model as a result of the Quartus Timing Model estimation.\\
+
+Legend:\\
+(LE is the number of Logic Elements used on the FPGA Board from available 114480LE)
+\begin{enumerate}[(1)]
+\item Inputfrequency for all Observer Stages: \textbf{50Mhz}
+ with plain Signalgenerator
+  \begin{enumerate}[a)]
+    \item 1 Observer , $\tau = 255$ and $f_{max} = 86,4Mhz$
+    \item 10 Observer, $\tau = 255$ and $f_{max} = 101,83Mhz$
+    \item 100 Observer, $\tau = 10$ and $f_{max} = 83,81Mhz$  (6718 LE$\sim$6\%)\\
+      $\;\;\;\tau = 255$ and $f_{max} = 79,88Mhz$
+    \item 300 Observer, $\tau = 255$ and $f_{max} = 74,01Mhz$ 
+    \item 1000 Observer, $\tau = 255$ and $f_{max} = 66,00Mhz$ (72514 LE$\sim$63\%)\\\\\\\\
+  \end{enumerate}
 
 
+\item Inputfrequency for all Observer Stages: \textbf{100Mhz}
+ with plain Signalgenerator
+  \begin{enumerate}[a)]
+    \item 1 Observer , $\tau = 255$ and $f_{max} = 96,82Mhz$
+    \item 10 Observer, $\tau = 255$ and $f_{max} = 134,99Mhz$
+    \item 100 Observer, $\tau = 255$ and $f_{max} = 116,44Mhz$
+    \item 1000 Observer, $\tau = 1$ and $f_{max} = 106,09Mhz$ \\
+    $\tau = 255$ and $f_{max} = 95,27Mhz$ (72755 LE$\sim$64\%)
+  \end{enumerate}
 
 
+\item Inputfrequency for all Observer Stages: \textbf{200Mhz}
+ with plain Signalgenerator
+  \begin{enumerate}[a)]
+    \item 1 Observer , $\tau = 255$ and $f_{max} = 90,82Mhz$
+    \item 10 Observer, $\tau = 255$ and $f_{max} = 139,30Mhz$ (possible \textbf{MAXIMUM})
+    \item 100 Observer, $\tau = 255$ and $f_{max} = 114,57Mhz$
+    \item 1000 Observer, $\tau = 255$ and $f_{max} = 103,46Mhz$
+  \end{enumerate}
+\end{enumerate}
+
+In experiment from (3) case b) the synthesis with the maximum possible performance of the Invariant Observer Design could be created by the Quartus Tool.
+In Appendix~\ref{appendix:3:section:2} there is an illustration of the RTL View of that design case.
+As high the performed input clock is, as good must Quartus sythesize the design to meet the requirements for that frequency. This results to the fact
+that the worst case path must stay inside the time needed for a clock cycle. In all three experiments from (1) to (3) we can see that it is not always possible
+to meet the requirements for a input clock. In the experiments with 200MHZ input clock there is no possible case that meets the requiremnts for that input clock.
+The maximum input clocks (e.g. case b and c) are indicated by experiment (2) with 100Mhz.  
+One interesting thing that can be seen in all three experiments (1),(2),(3) is that for case b) with 10 Observer, the Quartus tool reach always the maximum performance
+for the Invariant Observer Design.
+With 1000 Observer it occupy nearly 64\% of the capacity of the Logic Units, so that means that upper bound of possible Observers are close to 1500 Observers.
+This is the maximum limit of Observers that can be synthesized on the DE2-115 board. 
+Other boards with higher capacity are obviously capable to contain more Observers. (e.g. DE4 model series with Stratix IV FPGA cores with up to 820K LE)
+Finally, the differences between different values of $\tau$ are not significant as we can see in 1c), 2d), hence the variance keeps inside 10Mhz.
 
