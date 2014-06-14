@@ -1,14 +1,14 @@
 % ******************************* Thesis Appendix A ********************************
 \chapter{Source Implementation in VHDL} 
 \label{appendix:1}
-The following source Codes in this Appendix A shows the implementation of
-the Invariant Observer. 
-The Source Codes are written in VHDL 1993 and shows a description about the Behavioural Specification
-of the design. \newline \newline
-Observer.vhd is the entity specification of an Observer Stage and shows specifications about the input and outputs. 
-Figure~\ref{fig:observerstages} shows us an excerpt of the input and output but at most how the several observer stages interact together.
-\newline
-Observer\_behave.vhd describes the exact behaviour of an observer stage. A detailed description of this behaviour is shown in  Chapter~\ref{chapter:sub:2}.
+%The following source Codes in this Appendix A shows the implementation of
+%the Invariant Observer. 
+%The Source Codes are written in VHDL 1993 and shows a description about the Behavioural Specification
+%of the design. \newline \newline
+%Observer.vhd is the entity specification of an Observer Stage and shows specifications about the input and outputs. 
+%Figure~\ref{fig:observerstages} shows us an excerpt of the input and output but at most how the several observer stages interact together.
+%&\newline
+%Observer\_behave.vhd describes the exact behaviour of an observer stage. A detailed description of this behaviour is shown in  Chapter~\ref{chapter:sub:2}.
 %\lstinputlisting[language=VHDL]{../../../../vhdl/Observer.vhd}
 \begin{comment}
 %\phantomsection\addcontentsline{toc}{figure}{Entity Design of Invariant Observer}
@@ -53,20 +53,58 @@ Observer\_behave.vhd describes the exact behaviour of an observer stage. A detai
 %\label{appendix:source:2}
 \end{comment}
 
+\section{Observer Stage}
+
+\label{appendix:1:section:1}
 %\section{Entity Design}
-\begin{figure}[pt]
+\begin{center}
+\begin{figure}[h!]
 \centering
 \includegraphics[scale=1.0]{Appendix1/pdf/Observer_2.pdf}
 \caption[Entity Design of Invariant Observer]{Code of Observer Entity Design}
 \label{appendix:source:1}
 \end{figure}
+\end{center}
 
 %\section{Behavioural Design}
-\begin{figure}[pt]
 \begin{center}
+\begin{figure}[h!]
+
 \includegraphics[scale=0.80,angle=90]{Appendix1/pdf/Observer_behave_2.pdf}
-\end{center}
+
 \caption[Behavioural Design of Invariant Observer]{Code of the Behavioural Design of an Invariant Observer }
 \label{appendix:source:2}
 \end{figure}
+\end{center}
+
+
+
+\section{TOP File}
+\label{appendix:1:section:2}
+
+\begin{figure}[pt]
+\centering
+\includegraphics[scale=0.80,angle=90]{Appendix1/pdf/TOP_10OBS_1.pdf}
+\caption[TOP File Example-p1]{Example Code of a TOP file for experiments}
+\label{appendix:source:3}
+\end{figure}
+
+
+\begin{figure}[pt]
+\centering
+\includegraphics[scale=0.80,angle=90]{Appendix1/pdf/TOP_10OBS_2.pdf}
+\caption[TOP File Example-p1]{Example Code of a TOP file for experiments}
+\label{appendix:source:4}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
 

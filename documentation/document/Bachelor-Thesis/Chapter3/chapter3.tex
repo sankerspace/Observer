@@ -49,7 +49,7 @@ In Figure~\ref{fig:test:only:150:obs0}, it is illustrated how the syntheses tool
 to meet the requirements of that clock speed. The worst case path determines the maximum frequency, which is allowed for that design. 
 A more detailed description about the timing model is in the next subsection. 
 \subsection{Timing Model of the Design}
-\label{chapter:3:section:sub:2}
+\label{chapter:3:section:2:sub:2}
 One important thing that have to be considered is that the signal path from the beginning of the observer entity to the end should be as short as possible,  
 this concludes to some important design facts.
 The maximum frequency of the whole system is limited by the longest path of the design, which means that the performance of a system is expressed by the maximum frequency at which it may be operated. 
@@ -78,7 +78,7 @@ A lot of tests about estimations of the maximum frequency of different design ca
 from ``Slow 1200mv 85°C model'' were significant for further discussions. In the next chapter there is a summary of these tests. 
 
 \subsection{Design Decisions based on Register Transfer level}
-\label{chapter:3:section:sub:3}
+\label{chapter:3:section:2:sub:3}
 At the first time, where the VHDL Code of the observer stage was behavioural correct, some performance and optimization decisions had to be reconsidered. 
 The most important thing is to separate synchronous and asynchronous design. So, it was necessary to split the first version of a completely synchronous design, where
 every action is only triggered after every clock cycle. A more parallel approach was necessary where only state changes are done synchronously, but other actions should
