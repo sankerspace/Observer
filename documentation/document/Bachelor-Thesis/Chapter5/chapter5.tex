@@ -10,24 +10,28 @@
 \else
     \graphicspath{{Chapter3/Figs/Vector/}{Chapter3/Figs/}}
 \fi
-
-It was introduced an alternative version of an Invariant Observer from \cite{RTFMBJ13} which circumvents specific design restrictions from \cite{RTFMBJ13}.
+In this work, an alternative version of an Invariant Observer from \cite{RTFMBJ13} which circumvents specific design restrictions from \cite{RTFMBJ13} was introduced.
 For example, propositions $\phi$ are not restricted by the logahedron class of atomic proposition like in \cite{RTFMBJ13}, so there is not a tight time bound to fulfil. 
 With the possibility of a massively parallel constuction of the Observer Stages as parts of a complete Invariant Observer which allows evaluating a proposition $\phi$ 
-at every clock cycle, it could result to a big performance step.
+at every clock cycle, the proposed design can result in a significant performance increase.
 The Observer Stages are in way more flexible than in \cite{RTFMBJ13}, besides the possibility to change the Invariant $\tau$ during runtime. 
 But these agile advantages should be tested in a more detailed experiment and under real-time conditions.
-Another point to mention is, that the experiments considered only the case that the Observer Stages are running in the same time domain like the system that evaluates the proposition $\phi$ to W($\phi$).
-For example three clock cycles which passes for W($\phi$) are also the same three clock cycles for the Observer Stages. It came out, that a better resolution could be performed if
-the frequency that drives the Observer Stages is multiple higher than the frequency of the system that evaluates W($\phi$).
-For example if the evaluation system for W($\phi$) is driven with 10Khz and the Observer Stages with 20Khz and an Invariance of $\tau = 2$ on W($\phi$) should be monitored, then the Observer Stages must observe an invariance
+Another point to mention is, that the experiments considered only the case that the Observer Stages are running in 
+the same time domain as the system that evaluates the proposition $\phi$ to W($\phi$).
+For example three clock cycles which passes for W($\phi$) are also the same three clock cycles for the Observer Stages. 
+It came out, that a better resolution could be performed if
+the frequency that drives the Observer Stages is a multiple of the frequency of the system that evaluates W($\phi$).
+For example if the evaluation system for W($\phi$) is driven with 10KHz and the Observer Stages with 20KHz and an Invariance of $\tau = 2$ on W($\phi$) should be monitored, then the Observer Stages must observe an invariance
 of $\tau = 4$ to meet the same time domain. That aspect should be considered in further real-time experiments. 
 In \cite{RTFMBJ13} these two systems are acting together.
-The Invariant Observer should be considered as a temporal operator which follows the specifications of ptMTL $\boxdot _{[ y,y+\tau ]}$ but with the restriction that it can not perform the observation of the 
+The Invariant Observer should be considered as a temporal operator which follows the specifications of ptMTL $\boxdot _{[ y,y+\tau ]}$ but with the restriction that it cannot perform the observation of the 
 invariance inside intervall [0,y].
-That means, that the computation time for a  proposition $\phi$ can not be less than y (maybe the only disadvantage). 
-The design approach of the Invariant Observer shows maybe possibilities to implement other temporal operators from the Metric Temporal Logic like the ``Exists-Operator within Intervals'', 
-that could be also an attempt for further studies.
+That means, that the computation time for a  proposition $\phi$ cannot be less than y (maybe the only disadvantage). 
+Finally, the design approach of the Invariant Observer presented in this work also hints at potential approaches to derive other parallel performant temporal operators from
+the Metric Temporal Logic like ``Exists-Operator within Intervals''.
+ 
+
+
 
 
 
